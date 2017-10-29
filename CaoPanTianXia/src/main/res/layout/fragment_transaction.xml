@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:orientation="vertical">
+
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
+        xmlns:ptr="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/transaction_listview_guoji"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@null"
+        android:listSelector="@color/transparent"
+        ptr:ptrAnimationStyle="flip"
+        ptr:ptrHeaderBackground="#FFFFFF"
+        ptr:ptrHeaderTextColor="@color/text_color_2"/>
+
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
+        xmlns:ptr="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/transaction_listview_guonei"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@null"
+        android:listSelector="@color/transparent"
+        ptr:ptrAnimationStyle="flip"
+        ptr:ptrHeaderBackground="#FFFFFF"
+        ptr:ptrHeaderTextColor="@color/text_color_2"/>
+
+</LinearLayout>

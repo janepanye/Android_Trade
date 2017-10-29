@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_listview_divider"
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <com.coco3g.caopantx.view.TopBarView
+        android:id="@+id/tixian_topbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="@color/transparent"
+            android:paddingBottom="20dp"
+            android:paddingTop="20dp"
+            android:text="@string/text_tixian_yue"
+            android:textColor="@color/app_text_color"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tixian_tv_all_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="@color/transparent"
+            android:paddingBottom="20dp"
+            android:paddingTop="20dp"
+            android:text="1000元"
+            android:textColor="@color/app_text_color"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/shape_linearlayout"
+        android:orientation="vertical">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="30dp"
+            android:background="@color/transparent"
+            android:drawableLeft="@mipmap/pic_tixian_txje"
+            android:drawablePadding="8dp"
+            android:hint="@string/text_tixian_hint_txje"
+            android:inputType="number"
+            android:lines="1"
+            android:paddingBottom="20dp"
+            android:paddingTop="20dp"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/color_listview_divider" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="30dp"
+            android:background="@color/transparent"
+            android:drawableLeft="@mipmap/pic_tixian_txkh"
+            android:drawablePadding="8dp"
+            android:hint="@string/text_tixian_hint_kahao"
+            android:inputType="number"
+            android:lines="1"
+            android:paddingBottom="20dp"
+            android:paddingTop="20dp"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/color_listview_divider" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="20dp">
+
+            <EditText
+                android:id="@+id/tixian_tv_jymm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:drawableLeft="@mipmap/pic_tixian_jymm"
+                android:drawablePadding="8dp"
+                android:hint="@string/text_tixian_hint_mima"
+                android:inputType="number"
+                android:lines="1"
+                android:paddingBottom="20dp"
+                android:paddingTop="20dp"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:layout_width="0.5dp"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/tixian_tv_jymm"
+                android:layout_alignTop="@+id/tixian_tv_jymm"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_toLeftOf="@+id/tixian_tv_forgetpwd"
+                android:background="@color/color_listview_divider" />
+
+            <Button
+                android:id="@+id/tixian_tv_forgetpwd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@color/transparent"
+                android:padding="20dp"
+                android:text="@string/text_login_forgetpwd"
+                android:textColor="@color/app_text_color"
+                android:textSize="15sp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/shape_loginbtn_bg"
+        android:padding="10dp"
+        android:text="@string/text_register_next"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+</LinearLayout>

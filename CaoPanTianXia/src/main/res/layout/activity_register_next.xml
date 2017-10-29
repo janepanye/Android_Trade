@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_listview_divider"
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <com.coco3g.caopantx.view.TopBarView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/shape_linearlayout"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/next_et_pwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="30dp"
+            android:background="@color/transparent"
+            android:drawableLeft="@mipmap/pic_login_lock"
+            android:drawablePadding="8dp"
+            android:hint="密码"
+            android:inputType="textPassword"
+            android:lines="1"
+            android:paddingBottom="20dp"
+            android:paddingTop="20dp"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/color_listview_divider" />
+
+        <EditText
+            android:id="@+id/next_et_confirm_pwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="30dp"
+            android:background="@color/transparent"
+            android:drawableLeft="@mipmap/pic_login_lock"
+            android:drawablePadding="8dp"
+            android:hint="确认密码"
+            android:inputType="textPassword"
+            android:lines="1"
+            android:paddingBottom="20dp"
+            android:paddingTop="20dp"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/next_btn_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/shape_loginbtn_bg"
+        android:padding="10dp"
+        android:text="@string/text_login_register"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+</LinearLayout>

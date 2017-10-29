@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/app_activity_bg"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <!--<TextView-->
+            <!--android:id="@+id/item_child_iv"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:background="@drawable/pro_list_item_name"-->
+            <!--android:gravity="center"-->
+            <!--android:textColor="@color/white"-->
+            <!--android:textSize="22sp"-->
+            <!--android:textStyle="bold"/>-->
+
+        <ImageView
+            android:id="@+id/item_child_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@drawable/pro_list_item_name"
+            android:gravity="center" />
+
+        <LinearLayout
+            android:id="@+id/linear_home_item_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_toLeftOf="@+id/linear_home_item_trans"
+            android:layout_toRightOf="@+id/item_child_iv"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/item_child_tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/item_child_iv"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/item_child_tv_dec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/item_child_iv"
+                android:lines="1"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                android:textColor="@color/color_line_bg"
+                android:textSize="13sp"/>
+
+            <TextView
+                android:id="@+id/item_child_tv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_toRightOf="@+id/item_child_iv"
+                android:lines="1"
+                android:textColor="@color/color_line_bg"
+                android:textSize="13sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linear_home_item_trans"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/linear_home_item_info"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/linear_home_item_info"
+            android:layout_centerVertical="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/tv_home_item_state"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="0.5"
+                android:textColor="@color/app_theme_color"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/item_child_tv_money"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="0.5"
+                android:gravity="center"
+                android:textColor="@color/app_theme_color"
+                android:textSize="14sp"/>
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+</LinearLayout>

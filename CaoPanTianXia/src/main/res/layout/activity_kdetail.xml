@@ -1,0 +1,596 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/k_view_bg"
+                android:clipToPadding="true"
+                android:fitsSystemWindows="true">
+
+    <com.coco3g.caopantx.view.TopBarView
+        android:id="@+id/topbar_kdetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:id="@+id/linear_kdetail_web"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/linear_kdetail_bottom"
+        android:layout_below="@+id/topbar_kdetail"
+        android:orientation="vertical">
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tab_kdetail"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="center_horizontal"
+            android:visibility="gone"
+            app:tabBackground="@drawable/selector_tablayout_bg"
+            app:tabGravity="center"
+            app:tabIndicatorColor="@null"
+            app:tabIndicatorHeight="3dp"
+            app:tabMode="fixed"
+            app:tabSelectedTextColor="@color/yellow"
+            app:tabTextColor="@color/text_color_6"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal"
+            android:weightSum="7">
+
+            <TextView
+                android:id="@+id/tv_kdetail_fenshi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_tablayout_bg"
+                android:paddingBottom="2dp"
+                android:paddingTop="2dp"
+                android:text="分时"
+                android:textColor="@drawable/selector_tablayout_text"
+                android:textSize="14sp"
+                android:layout_weight="1"
+                android:gravity="center"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight=".5"/>
+
+            <TextView
+                android:id="@+id/tv_kdetail_rixian"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/selector_tablayout_bg"
+                android:paddingBottom="2dp"
+                android:paddingTop="2dp"
+                android:text="日线"
+                android:textColor="@drawable/selector_tablayout_text"
+                android:textSize="14sp"
+                android:layout_weight="1"
+                android:gravity="center"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight=".5"/>
+            <TextView
+                android:id="@+id/tv_kdetail_pankou"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_tablayout_bg"
+                android:paddingBottom="2dp"
+                android:paddingTop="2dp"
+                android:text="盘口"
+                android:textColor="@drawable/selector_tablayout_text"
+                android:textSize="14sp"
+                android:layout_weight="1"
+                android:gravity="center"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight=".5"/>
+            <TextView
+                android:id="@+id/tv_kdetail_min5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_tablayout_bg"
+                android:paddingBottom="2dp"
+                android:paddingTop="2dp"
+                android:text="5分线"
+                android:textColor="@drawable/selector_tablayout_text"
+                android:textSize="14sp"
+                android:layout_weight="1"
+                android:gravity="center"/>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.coco3g.caopantx.view.KViewWebView
+                android:id="@+id/web_kdetail_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <com.coco3g.caopantx.view.KViewWebView
+                android:id="@+id/web_kdetail_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <com.coco3g.caopantx.view.KViewWebView
+                android:id="@+id/web_kdetail_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <com.coco3g.caopantx.view.KViewWebView
+                android:id="@+id/web_kdetail_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear_kdetail_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/relative_kdetail_money"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="@color/k_grey">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true">
+
+                <TextView
+                    android:id="@+id/tv_kdetail_shipan_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:padding="10dp"
+                    android:text="账户实盘资金："
+                    android:textColor="@color/yellow"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:id="@+id/tv_kdetail_shipan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_toRightOf="@+id/tv_kdetail_shipan_description"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp"
+                    android:text="4545"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"/>
+
+                <ImageView
+                    android:id="@+id/image_kdetail_refresh_data"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/tv_kdetail_shipan"
+                    android:src="@mipmap/pic_refresh_icon"/>
+
+                <TextView
+                    android:id="@+id/tv_kdetail_fudong"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:text="0.00"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="5dp"
+                    android:layout_toLeftOf="@+id/tv_kdetail_fudong"
+                    android:text="浮动盈亏 "
+                    android:textColor="@color/yellow"
+                    android:textSize="12sp"/>
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/text_color_11"/>
+
+        <RelativeLayout
+            android:id="@+id/linear_kdetail_data_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/k_grey"
+            android:gravity="center_horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="8dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_kdetail_saleprice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/yellow"
+                    android:textSize="13sp"/>
+
+                <TextView
+                    android:id="@+id/tv_kdetail_perprice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:textColor="@color/yellow"
+                    android:textSize="13sp"/>
+
+                <TextView
+                    android:id="@+id/tv_kdetail_zhangdie"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:textColor="@color/yellow"
+                    android:textSize="13sp"/>
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/linear_kdetail_data_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/k_grey"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="1dp">
+
+            <TextView
+                android:id="@+id/tv_kdetail_buynum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:text="买卖量"
+                android:textColor="@color/yellow"
+                android:textSize="12dp"/>
+
+            <TextView
+                android:id="@+id/tv_kdetail_buynum_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_toLeftOf="@id/tv_kdetail_buynum"
+                android:gravity="center_vertical"
+                android:text="0"
+                android:textColor="@color/transparent2"
+                android:textSize="12dp"/>
+
+            <ProgressBar
+                android:id="@+id/progress_kdetail_1"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/tv_kdetail_buynum_num"
+                android:max="100"
+                android:progressDrawable="@drawable/progressbar1"/>
+
+            <TextView
+                android:id="@+id/tv_kdetail_salenum_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:layout_toRightOf="@id/tv_kdetail_buynum"
+                android:gravity="center_vertical"
+                android:text="0"
+                android:textColor="@color/green_1"
+                android:textSize="12sp"/>
+
+            <ProgressBar
+                android:id="@+id/progress_kdetail_2"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/tv_kdetail_salenum_num"
+                android:max="100"
+                android:progressDrawable="@drawable/progressbar2"/>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/linear_kdetail_mai_zhang_die"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/k_grey"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <LinearLayout
+                android:id="@+id/linear_kdetail_mai_duo_kong"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:id="@+id/linear_kdetail_maizhang"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_red_bg"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="买多价"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/tv_kdetail_maizhang"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="6dp"
+                        android:paddingTop="6dp"
+                        android:text="273"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linear_kdetail_maidie"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_green_bg"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="买空价"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/tv_kdetail_maidie"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="6dp"
+                        android:paddingTop="6dp"
+                        android:text="2335"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/linear_kdetail_mai_duo_kong"
+                android:layout_alignTop="@+id/linear_kdetail_mai_duo_kong"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true">
+
+                <ImageView
+                    android:id="@+id/image_kdetail_xiadan_black_bg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/jisu_xiadan_bg"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relative_kdetail_jisu_xiadan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/linear_kdetail_mai_duo_kong"
+                android:layout_alignTop="@+id/linear_kdetail_mai_duo_kong"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:padding="3dp">
+
+                <ImageView
+                    android:id="@+id/image_kdetail_"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/pingcang_bg"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center_horizontal"
+                    android:drawableTop="@mipmap/pic_shan_dian"
+                    android:gravity="center"
+                    android:text="快速"
+                    android:textColor="@color/yellow"
+                    android:textSize="8sp"/>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <!--<ImageView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1dp"-->
+        <!--android:background="@color/text_color_10" />-->
+
+        <!--一建全平-->
+        <RelativeLayout
+            android:id="@+id/linear_kdetail_yijian_quanping"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/k_grey"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <!--<TextView-->
+                <!--android:id="@+id/tv_kdetail_chicang_time"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:text="本时段持仓时间至02:28:00"-->
+                <!--android:textColor="@color/transparent2"-->
+                <!--android:textSize="12sp"/>-->
+
+            <TextView
+                android:id="@+id/tv_kdetail_yijian_quanping"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/shape_red_txt_bg"
+                android:paddingBottom="5dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="5dp"
+                android:text="一键全平"
+                android:textColor="@color/white"
+                android:textSize="12sp"/>
+
+
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/text_color_11"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="0.5dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <RelativeLayout
+                android:id="@+id/relative_kdetail_chicang_zhibo"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:id="@+id/tv_kdetail_chicang_zhibo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:background="@color/black_1"
+                    android:drawablePadding="5dp"
+                    android:gravity="center"
+                    android:text="持仓直播"
+                    android:textColor="@color/transparent2"
+                    android:textSize="16sp"/>
+
+                <ImageView
+                    android:id="@+id/tv_kdetail_unread"
+                    android:layout_width="4dp"
+                    android:layout_height="4dp"
+                    android:layout_marginTop="13dp"
+                    android:layout_toRightOf="@+id/tv_kdetail_chicang_zhibo"
+                    android:gravity="center"
+                    android:src="@drawable/unread_bg"
+                    android:visibility="visible"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/tv_kdetail_chicang_zhibo"
+                    android:layout_toRightOf="@+id/tv_kdetail_unread"
+                    android:paddingTop="3dp"
+                    android:src="@mipmap/pic_kdetail_chicangzhibo_icon"/>
+            </RelativeLayout>
+            <ImageView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/text_color_11"/>
+
+            <RelativeLayout
+                android:id="@+id/relative_kdetail_chicang"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:id="@+id/tv_kdetail_chicang"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@color/black_1"
+                    android:gravity="center_vertical"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="5dp"
+                    android:text="持仓"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/tv_kdetail_chicang_unread_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_toRightOf="@id/tv_kdetail_chicang"
+                    android:background="@drawable/circle_red_bg"
+                    android:gravity="center"
+                    android:text="1"
+                    android:textColor="@color/white"
+                    android:textSize="10sp"
+                    android:visibility="gone"/>
+
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/text_color_11"/>
+
+            <TextView
+                android:id="@+id/tv_kdetail_jiesuan"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/black_1"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="结算"
+                android:textColor="@color/white"
+                android:textSize="16sp"/>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

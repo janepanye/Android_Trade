@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_activity_bg"
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <com.coco3g.caopantx.view.TopBarView
+        android:id="@+id/tgzq_topbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:paddingTop="15dp"
+        android:weightSum="3">
+
+        <TextView
+            android:id="@+id/tgzq_tv_yongjin"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="0"
+            android:textColor="@color/app_theme_color"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tgzq_tv_bili"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="0"
+            android:textColor="@color/app_theme_color"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tgzq_tv_yaoqing"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="0"
+            android:textColor="@color/app_theme_color"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingBottom="20dp"
+        android:paddingTop="5dp"
+        android:weightSum="3">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/text_tgzq_yongjin"
+                android:textColor="@color/app_text_color"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/pic_tgzq_tx" />
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/text_tgzq_yongjinbili"
+            android:textColor="@color/app_text_color"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/text_tgzq_wodeyaoqing"
+            android:textColor="@color/app_text_color"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/tgzq_yaoqingma"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:text="@string/text_tgzq_yaoqingma"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tgzq_tv_yaoqingma"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/tgzq_yaoqingma"
+            android:text="100000"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:id="@+id/tgzq_iv_copy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:src="@mipmap/pic_tgzq_fz" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tgzq_tv_howtogetmoney"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:drawableLeft="@mipmap/pic_tgzq_money"
+        android:drawablePadding="15dp"
+        android:gravity="center_vertical"
+        android:padding="15dp"
+        android:text="@string/text_tgzq_rhzq"
+        android:textColor="@color/app_theme_color"
+        android:textSize="15sp" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/color_listview_divider" />
+
+    <TextView
+        android:id="@+id/tgzq_tv_one"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:drawableLeft="@mipmap/pic_tgzq_one"
+        android:drawablePadding="15dp"
+        android:gravity="center_vertical"
+        android:padding="15dp"
+        android:text="@string/text_tgzq_one"
+        android:textSize="15sp" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/color_listview_divider" />
+
+    <TextView
+        android:id="@+id/tgzq_tv_two"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:drawableLeft="@mipmap/pic_tgzq_two"
+        android:drawablePadding="15dp"
+        android:gravity="center_vertical"
+        android:padding="15dp"
+        android:text="@string/text_tgzq_two"
+        android:textSize="15sp" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/color_listview_divider" />
+
+    <TextView
+        android:id="@+id/tgzq_tv_three"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:drawableLeft="@mipmap/pic_tgzq_three"
+        android:drawablePadding="15dp"
+        android:gravity="center_vertical"
+        android:padding="15dp"
+        android:text="@string/text_tgzq_three"
+        android:textSize="15sp" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/color_listview_divider" />
+
+    <TextView
+        android:id="@+id/tgzq_tv_four"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:drawableLeft="@mipmap/pic_tgzq_four"
+        android:drawablePadding="15dp"
+        android:gravity="center_vertical"
+        android:padding="15dp"
+        android:text="@string/text_tgzq_four"
+        android:textSize="15sp" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/color_listview_divider" />
+</LinearLayout>

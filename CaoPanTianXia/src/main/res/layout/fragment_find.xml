@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/app_activity_bg"
+              android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/app_activity_bg"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:weightSum="8">
+
+        <LinearLayout
+            android:id="@+id/find_rl_tgzq"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/find_iv_tgzq"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/pic_home_xszy_1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="新手指引"
+                android:textColor="@color/app_text_color"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="指引新手快上手"
+                android:textColor="@color/color_line_bg"
+                android:textSize="12sp"/>  //@string/text_find_tgzq_text
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="@color/app_activity_bg"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/find_rl_xxzx"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp">
+
+                <ImageView
+                    android:id="@+id/find_iv_xxzx"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:src="@mipmap/pic_find_xxzx"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/find_iv_xxzx"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/find_iv_xxzx"
+                    android:text="@string/text_find_xxzx"
+                    android:textColor="@color/app_text_color"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/find_iv_xxzx"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/find_iv_xxzx"
+                    android:text="@string/text_find_xxzx_text"
+                    android:textColor="@color/color_line_bg"
+                    android:textSize="12sp"/>
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/app_activity_bg"/>
+
+            <RelativeLayout
+                android:id="@+id/find_rl_rwzx"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp">
+
+                <ImageView
+                    android:id="@+id/find_iv_rwzx"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:src="@mipmap/pic_find_rwzx"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/find_iv_rwzx"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/find_iv_rwzx"
+                    android:text="@string/text_find_rwzx"
+                    android:textColor="@color/app_text_color"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/find_iv_rwzx"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/find_iv_rwzx"
+                    android:text="@string/text_find_rwzx_text"
+                    android:textColor="@color/color_line_bg"
+                    android:textSize="12sp"/>
+            </RelativeLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/find_iv_mnds"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="15dp"
+            android:paddingLeft="15dp"
+            android:src="@mipmap/pic_find_mnds"/>
+
+        <ImageView
+            android:layout_width="0.5dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/find_iv_mnds"
+            android:layout_alignTop="@+id/find_iv_mnds"
+            android:layout_centerInParent="true"
+            android:background="@color/app_activity_bg"/>
+
+        <ImageView
+            android:id="@+id/find_iv_xinyonghu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="15dp"
+            android:paddingRight="15dp"
+            android:src="@mipmap/pic_find_xyhzx"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="15dp"
+        android:weightSum="1">
+
+        <!--<RelativeLayout-->
+            <!--android:id="@+id/find_rl_jfsc"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content">-->
+
+            <!--<ImageView-->
+                <!--android:id="@+id/find_iv_jfsc"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:src="@mipmap/pic_find_jfsc"/>-->
+
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_alignTop="@+id/find_iv_jfsc"-->
+                <!--android:layout_marginLeft="10dp"-->
+                <!--android:layout_toRightOf="@+id/find_iv_jfsc"-->
+                <!--android:text="@string/text_find_jfsc"-->
+                <!--android:textColor="@color/app_text_color"-->
+                <!--android:textSize="14sp"/>-->
+
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_alignBottom="@+id/find_iv_jfsc"-->
+                <!--android:layout_marginLeft="10dp"-->
+                <!--android:layout_toRightOf="@+id/find_iv_jfsc"-->
+                <!--android:text="@string/text_find_jfsc_text"-->
+                <!--android:textColor="@color/color_line_bg"-->
+                <!--android:textSize="12sp"/>-->
+        <!--</RelativeLayout>-->
+
+        <!--<ImageView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0.5dp"-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--android:background="@color/app_activity_bg"/>-->
+
+        <RelativeLayout
+            android:id="@+id/find_rl_jssj"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:id="@+id/find_iv_jssj"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/pic_find_jfsc"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/find_iv_jssj"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/find_iv_jssj"
+                android:text="金十数据"
+                android:textColor="@color/app_text_color"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/find_iv_jssj"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/find_iv_jssj"
+                android:text="金十网，全球财经咨询，图形化数据解读"
+                android:textColor="@color/color_line_bg"
+                android:textSize="12sp"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <!--<com.coco3g.caiyongtong.view.MyScrollWebView-->
+    <!--android:id="@+id/webview_fragment_find"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent">-->
+
+    <!--</com.coco3g.caiyongtong.view.MyScrollWebView>-->
+
+</LinearLayout>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:visibility="visible">
+
+    <ImageView
+        android:id="@+id/image_home_group_bg"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/app_activity_bg" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_home_item_group_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:padding="10dp"
+            android:text="国际期货推荐" />
+
+        <TextView
+            android:id="@+id/tv_home_item_group_change"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@mipmap/pic_home_change"
+            android:drawablePadding="5dp"
+            android:padding="10dp"
+            android:text="换一换"
+            android:visibility="gone" />
+    </RelativeLayout>
+</LinearLayout>

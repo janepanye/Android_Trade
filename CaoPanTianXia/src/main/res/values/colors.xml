@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="white">#ffffff</color>
+    <color name="white1">#ffffff</color>
+    <!--FF6C14-->
+    <color name="app_theme_color">#f52b07</color>
+    <color name="app_activity_bg">#f5f5f5</color>
+    <color name="app_text_color">#333333</color>
+    <color name="k_grey">#242424</color>
+    <color name="black">#000000</color>
+    <color name="black_1">#111113</color>
+    <color name="k_view_bg">#101318</color>
+    <color name="red">#ff0000</color>
+    <color name="red_1">#f52b07</color>
+    <color name="red_2">#b80077</color>
+    <color name="green">#00a553</color>
+    <color name="green_1">#2d9867</color>
+    <color name="indicator_color">#0077f6</color>
+    <color name="moni_type_color">#60b0fe</color>
+    <color name="text_color_1">#696969</color>
+    <color name="text_color_2">#a6a6a6</color>
+    <color name="text_color_3">#0b0b0b</color>
+    <color name="text_color_4">#cccccc</color>
+    <color name="text_color_5">#080808</color>
+    <color name="text_color_6">#8b8a89</color>
+    <color name="text_color_7">#403f40</color>
+    <color name="text_color_8">#9a9a9a</color>
+    <color name="text_color_9">#363f3a</color>
+    <color name="text_color_10">#a7a7a7</color>
+    <color name="text_color_11">#333235</color>
+    <color name="text_color_12">#eaeaea</color>
+
+    <color name="yellow">#b9955a</color>
+
+    <!--登录-->
+    <color name="transparent">#00ffffff</color>
+    <color name="transparent1">#bbffffff</color>
+    <color name="transparent2">#e04949</color>
+    <color name="color_line_bg">#999999</color>
+    <color name="color_login_btn_bg">#ffba00</color>
+    <color name="color_login_register_text">#DD3434</color>
+    <!--首页-->
+    <color name="color_listview_divider">#e3e3e3</color>
+    <color name="color_me_reigster">#a40000</color>
+    <!--注册-->
+    <color name="register_agreement_color">#4776ef</color>
+</resources>

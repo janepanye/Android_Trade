@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <com.handmark.pulltorefresh.library.PullToRefreshExpandableListView
+        android:id="@+id/listview_home"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@null"
+        android:listSelector="@color/transparent"/>
+
+
+    <!--<com.coco3g.zhong.view.MyScrollWebView-->
+    <!--android:id="@+id/webview_fragment_home"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent">-->
+
+    <!--</com.coco3g.zhong.view.MyScrollWebView>-->
+</LinearLayout>

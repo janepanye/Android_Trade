@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_activity_bg"
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true">
+
+    <com.coco3g.caopantx.view.TopBarView
+        android:id="@+id/topbar_moni_trans"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
+        xmlns:ptr="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/listview_moni_transaction_guoji"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/topbar_moni_trans"
+        android:divider="@null"
+        android:listSelector="@color/transparent"
+        ptr:ptrAnimationStyle="flip"
+        ptr:ptrHeaderBackground="#FFFFFF"
+        ptr:ptrHeaderTextColor="@color/text_color_2"/>
+
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
+        xmlns:ptr="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/listview_moni_transaction_guonei"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/topbar_moni_trans"
+        android:divider="@null"
+        android:listSelector="@color/transparent"
+        ptr:ptrAnimationStyle="flip"
+        ptr:ptrHeaderBackground="#FFFFFF"
+        ptr:ptrHeaderTextColor="@color/text_color_2"/>
+</RelativeLayout>

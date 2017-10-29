@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/item_tv_guize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@mipmap/pic_test_icon_au"
+        android:drawablePadding="10dp"
+        android:drawableRight="@mipmap/pic_right_more"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:text="aaaaaaaaa"
+        android:textSize="15sp" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/color_listview_divider" />
+</LinearLayout>

@@ -1,0 +1,159 @@
+<resources>
+    <string name="app_name">操盘天下</string>
+    <!--base-->
+    <string name="exit_app_tip">再按一次退出程序</string>
+    <string name="loading">正在加载中...</string>
+    <string name="start_activity_shuoming">期货操盘手孵化平台</string>
+    <string name="checking_update">正在检查新版本...</string>
+    <string name="logouting">正在注销...</string>
+    <string name="login_loading">正在登录，请稍候...</string>
+    <string name="register_loading">正在注册，请稍候...</string>
+    <string name="add_comment">正在发布...</string>
+    <string name="gallery_camera_name">相机胶卷</string>
+    <string name="gallery_browse_image">查看大图</string>
+    <string name="gallery_remove">移除</string>
+    <string name="choose_operation">选择操作</string>
+    <string name="icon_check">&#xf00c;</string>
+    <string name="icon_tv_camera">&#xf030;</string>
+    <string name="icon_tv_add">&#xf067;</string>
+    <string name="video_play">播放</string>
+    <string name="record_video">按住拍</string>
+    <string name="record_amr">录音</string>
+    <string name="record_save">保存</string>
+    <string name="record_rrerecord">重拍</string>
+    <string name="record_up_cancel">上移取消</string>
+    <string name="record_takeoff_cancel">松开取消</string>
+    <string name="uploading">正在上传</string>
+    <string name="text_dialog_exit">是否确认退出？</string>
+    <string name="smssdk_unreceive_identify_code">点击重新发送</string>
+    <string name="get_verify_code">获取验证码</string>
+    <string name="smssdk_receive_msg">
+        <Data>
+            &lt;font color=#ff0000>%s&lt;/font>秒后重新发送
+        </Data>
+    </string>
+    <!--Main-->
+    <string name="alert_hint">提示</string>
+    <string name="confirm">确认</string>
+    <string name="confirm1">确定</string>
+    <string name="cancel">取消</string>
+    <string name="save">保存</string>
+    <string name="close">关闭</string>
+    <!--error-->
+    <string name="error_net">网络错误，请检查网络重试</string>
+    <string name="error_phone_null_tip">手机号不能为空</string>
+    <string name="error_verification_null_tip">验证码不能为空</string>
+    <string name="error_pwd_null_tip">登录密码不能为空</string>
+    <string name="error_search_keywords_null_tip">搜索关键字不能为空</string>
+    <string name="error_oldpwd_null_tip">原始密码不能为空</string>
+    <string name="error_newpwd_null_tip">新密码不能为空</string>
+    <string name="error_pwd_diff_tip">两次密码输入不一致，请重新输入</string>
+    <string name="error_gallery_null_tip">没有找到相册目录</string>
+    <string name="error_message_board_null_tip">内容不能为空</string>
+    <string name="error_upload_failure">上传失败</string>
+    <string name="error_comment_content_null_tip">评论内容不能为空</string>
+    <!--登录-->
+    <string name="text_login">登录</string>
+    <string name="text_login_hint_phone">手机号码</string>
+    <string name="text_login_hint_pwd">设置登录密码</string>
+    <string name="text_login_forgetpwd">忘记密码</string>
+    <string name="text_login_register">注册</string>
+    <!--注册-->
+    <string name="text_register_hint_code">验证码</string>
+    <string name="text_register_getcode">获取验证码</string>
+    <string name="text_register_protocal">已阅读并同意</string>
+    <string name="text_register_protocal_content">《操盘天下使用协议》</string>
+    <string name="text_register_next">下一步</string>
+    <string name="text_register_have_account_login">已有账号，马上登录</string>
+    <string name="text_register_hint_recommend_code">推荐码</string>
+
+    <!---->
+    <string name="text_bottom_home">首页</string>
+    <string name="text_bottom_transaction">交易</string>
+    <string name="text_bottom_radio">直播</string>
+    <string name="text_bottom_discover">服务</string>
+    <string name="text_bottom_me">我的</string>
+    <!--首页-->
+    <string name="text_home_guojiqihuo">国际期货</string>
+    <string name="text_home_guoneiqihuo">国内期货</string>
+    <string name="text_home_monicaopan">模拟操盘</string>
+    <string name="text_home_xinshouzhidao">新手指导</string>
+    <string name="text_home_change">换一换</string>
+    <!--我的-->
+    <string name="text_me_tixian">提现</string>
+    <string name="text_me_chongzhi">充值</string>
+    <string name="text_me_zjmx">资金明细</string>
+    <string name="text_me_jyjl">交易记录</string>
+    <string name="text_me_tgzj">推广赚钱</string>
+    <string name="text_me_wdjf">我的积分</string>
+    <string name="text_me_wdyh">我的优惠</string>
+    <string name="text_me_grzl">个人资料</string>
+    <string name="text_me_setting">设置</string>
+    <!--发现-->
+    <string name="text_find_tgzq">推广赚钱</string>
+    <string name="text_find_tgzq_text">独乐乐不如众乐乐</string>
+    <string name="text_find_xxzx">消息中心</string>
+    <string name="text_find_xxzx_text">快来查看新消息</string>
+    <string name="text_find_rwzx">任务中心</string>
+    <string name="text_find_rwzx_text">完成任务丰富生活</string>
+    <string name="text_find_jfsc">积分商场</string>
+    <string name="text_find_jfsc_text">使用积分兑换商品</string>
+    <!--交易-->
+    <string name="text_transaction_zuixinjia">最新价</string>
+    <string name="text_transaction_zhangdiefu">涨跌幅</string>
+    <string name="text_transaction_chicang">持仓: </string>
+    <string name="text_transaction_yingkui">盈亏: </string>
+    <!--个人资料-->
+    <string name="text_userinfo">个人资料</string>
+    <string name="text_userinfo_shimingrenzheng">实名认证</string>
+    <string name="text_userinfo_gangdingshouji">绑定手机</string>
+    <string name="text_userinfo_loginpassword">登录密码</string>
+    <string name="text_userinfo_tixianmima">提现密码</string>
+    <string name="text_userinfo_xiugai">修改</string>
+    <string name="text_userinfo_about">关于</string>
+    <string name="text_userinfo_exit">退出登录</string>
+    <!--提现-->
+    <string name="text_tixian">提现</string>
+    <string name="text_tixian_jilu">提现记录</string>
+    <string name="text_tixian_yue">余额：</string>
+    <string name="text_tixian_hint_txje">提现金额</string>
+    <string name="text_tixian_hint_kahao">提现卡号</string>
+    <string name="text_tixian_hint_mima">交易密码</string>
+    <!--充值-->
+    <string name="text_chongzhi">充值余额</string>
+    <string name="text_chongzhi_yue">充值后余额：</string>
+    <string name="text_chongzhi_jilu">充值记录</string>
+    <string name="text_chongzhi_confirm">确认充值</string>
+    <string name="text_chongzhi_hint_outoften">请输入10元以上充值金额</string>
+    <string name="text_chongzhi_tishi">温馨提示：充值提现只支持单卡操作。</string>
+    <!--推广赚钱-->
+    <string name="text_tgzq">推广赚钱</string>
+    <string name="text_tgzq_rule">规则</string>
+    <string name="text_tgzq_yongjin">佣金</string>
+    <string name="text_tgzq_yongjinbili">佣金比例</string>
+    <string name="text_tgzq_wodeyaoqing">我的邀请</string>
+    <string name="text_tgzq_yaoqingma">我的邀请码:</string>
+    <string name="text_tgzq_rhzq">如何赚钱</string>
+    <string name="text_tgzq_one">发送推广链接给朋友</string>
+    <string name="text_tgzq_two">点击链接注册成为您邀请的用户</string>
+    <string name="text_tgzq_three">您的邀请用户开始交易</string>
+    <string name="text_tgzq_four">开启赚钱模式</string>
+    <!--积分商城-->
+    <string name="text_jfsc">积分商城</string>
+    <string name="text_jfsc_mingxi">明细</string>
+    <string name="text_jfsc_keyongjifen">可用积分</string>
+    <string name="text_jfsc_dongjiejifen">冻结积分</string>
+    <string name="text_jfsc_duihuan">积分兑换专区</string>
+    <string name="text_jfsc_dh">兑换</string>
+    <!--任务中心 -->
+    <string name="text_rwzx">任务中心</string>
+    <string name="text_rwzx_xinshourenwu">新手任务</string>
+    <string name="text_rwzx_meirirenwu">每日任务</string>
+    <string name="text_rwzx_shuoming">规则说明</string>
+    <string name="text_rwzx_jifen">积分：可进行优惠券兑换（仅限100的倍数使用，如100积分，200积分），以及在会员俱乐部进行商品兑换，有效期为一个自然年</string>
+    <string name="text_rwzx_xianjinquan">现金券：可抵扣用户操盘所产生的交易中合费</string>
+
+
+    <string name="connection_error">网络连接失败 ,请连接网络</string>
+
+</resources>

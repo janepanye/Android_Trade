@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/home_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:id="@+id/home_ll_dot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_alignBottom="@+id/home_viewpager"
+        android:orientation="horizontal" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/home_viewpager"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:weightSum="4">
+
+        <TextView
+            android:id="@+id/home_tv_gjqh"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="8dp"
+            android:drawableTop="@mipmap/pic_home_gjqh_1"
+            android:gravity="center_horizontal"
+            android:text="@string/text_home_guojiqihuo"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/home_tv_gnqh"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="8dp"
+            android:drawableTop="@mipmap/pic_home_gnqh_1"
+            android:gravity="center_horizontal"
+            android:text="@string/text_home_guoneiqihuo"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/home_tv_mncp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="8dp"
+            android:drawableTop="@mipmap/pic_home_micp_1"
+            android:gravity="center_horizontal"
+            android:text="@string/text_home_monicaopan"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/home_tv_xszd"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="8dp"
+            android:drawableTop="@mipmap/pic_home_xszy_1"
+            android:gravity="center_horizontal"
+            android:text="@string/text_home_xinshouzhidao"
+            android:textSize="15sp"/>
+    </LinearLayout>
+</RelativeLayout>
