@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -57,7 +58,7 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
 //    MyViewPageAdapter mAdapter;
     LinearLayout mLinearWeb, mLinearMaidie, mLinearMaZhang, mLinear;
     RelativeLayout mRelativeChiCangZB, mRelativeChiCang;
-    //    CheckBox mSwitch;
+    CheckBox mSwitch;
     //
     RelativeLayout.LayoutParams mLpKview;
     String[] mTitlelist;
@@ -716,11 +717,11 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
 //            mRelativeOrder.setVisibility(View.VISIBLE);
 //            mLinearOrder.setVisibility(View.VISIBLE);
             if ("1".equals(mMoni)) {
-//                mTxtShipanDs.setText("乐币");
+                mTxtShipanDs.setText("模拟账户资金");
                 mTxtShipan.setText(mCurrProInfo.amount + "元");
                 mTxtShipan.setTextColor(getResources().getColor(R.color.white));
             } else {
-//                mTxtShipanDs.setText("可用资金");
+                mTxtShipanDs.setText("账户实盘资金");
                 mTxtShipan.setText(mCurrProInfo.amount + "元");
                 mTxtShipan.setTextColor(getResources().getColor(R.color.white));
             }
@@ -728,9 +729,9 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
 //            mLinearOrder.setVisibility(View.GONE);
 //            mRelativeOrder.setVisibility(View.GONE);
             if ("1".equals(mMoni)) {
-                mTxtShipanDs.setText("乐币");
+                mTxtShipanDs.setText("模拟账户资金");
             } else {
-                mTxtShipanDs.setText("可用资金");
+                mTxtShipanDs.setText("账户实盘资金");
             }
             if ("1".equals(mMoni)) {
                 mTxtShipan.setText("未登录");

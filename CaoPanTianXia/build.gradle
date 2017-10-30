@@ -5,7 +5,6 @@ android {
         caopantianxia {
             keyAlias 'CaoPanTianXia'
             keyPassword 'caopantianxia.com'
-//            D:/android/home/caopantianxia/CaoPanTianXia/caopantianxia.jks
             storeFile file('caopantianxia.jks')
             storePassword 'caopantianxia.com'
         }
@@ -16,8 +15,8 @@ android {
         applicationId "com.coco3g.caopantx"
         minSdkVersion 14
         targetSdkVersion 23
-        versionCode 111
-        versionName "1.1.1"
+        versionCode 112
+        versionName "1.1.2"
         testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
     }
     buildTypes {
