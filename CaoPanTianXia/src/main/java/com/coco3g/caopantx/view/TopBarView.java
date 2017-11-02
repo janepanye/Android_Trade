@@ -199,9 +199,10 @@ public class TopBarView extends RelativeLayout implements OnClickListener {
             onclickleftview.onClickLeftView();
         }
     }
-//
- //
-    //新加的
+
+
+
+    //点击右侧持仓明细
     public void setOnClickTopRight(OnClickTopRight onclicktopright) {
         this.onclicktopright = onclicktopright;
     }
@@ -216,7 +217,8 @@ public class TopBarView extends RelativeLayout implements OnClickListener {
         void onClickTopRight();
     }
 
-    //
+
+
     public void setOnClickRightListener(OnClickRightView onclicktopbarview) {
         this.onclickrightview = onclicktopbarview;
     }
