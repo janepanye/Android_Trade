@@ -9,9 +9,9 @@ public class DataUrl {
 //    public static final String BASE_URL = "http://wap.app.njs168.com"; // 正式
 
 
-    public static final String BASE_URL = "http://visit.meiqinet.com"; // 测试
+//    public static final String BASE_URL = "http://visit.meiqinet.com"; // 测试
 
-//    public static final String BASE_URL = "http://visit.panshou.cn"; // 正式
+    public static final String BASE_URL = "http://visit.panshou.cn"; // 正式
     // 风险告知书url
     public static final String FENGXIAN_URL = BASE_URL + "/content/index/page/catid/23";
     // 用户服务协议
