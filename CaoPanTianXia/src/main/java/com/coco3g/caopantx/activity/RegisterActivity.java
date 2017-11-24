@@ -91,6 +91,13 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                     Global.showToast("请设置登录密码", this);
                     return;
                 }
+
+                // 邀请码检测 必填邀请码
+                if (TextUtils.isEmpty(recommendCode)) {
+                    Global.showToast("请输入邀请码", this);
+                    return;
+                }
+
                 if (!mCbxProtocal.isChecked()) {
                     Global.showToast("请先阅读协议", this);
                     return;

@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.coco3g.caopantx.R;
 
+    /** 自定义Tabbar栏上图下字  */
 
 public class BottomNavImageView extends LinearLayout {
     Context mContext;
@@ -37,6 +38,7 @@ public class BottomNavImageView extends LinearLayout {
     }
 
     public void setSelected(int index, boolean selected) {
+
         super.setSelected(selected);
     }
 
