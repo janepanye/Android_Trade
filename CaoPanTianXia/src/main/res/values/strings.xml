@@ -103,6 +103,7 @@
     <string name="text_transaction_zhangdiefu">涨跌幅</string>
     <string name="text_transaction_chicang">持仓: </string>
     <string name="text_transaction_yingkui">盈亏: </string>
+    <string name="text_transaction_type">品种</string>
     <!--个人资料-->
     <string name="text_userinfo">个人资料</string>
     <string name="text_userinfo_shimingrenzheng">实名认证</string>

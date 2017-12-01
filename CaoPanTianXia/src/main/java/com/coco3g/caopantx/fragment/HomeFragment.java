@@ -38,7 +38,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     View mHeaderView;
     LinearLayout mLinearHeaderMenu;
     BannerView mHeaderBanner;
-    TextView mTxtMoni, mTxtNews, mTxtFinance, mTxtHelp, mTxtRadio, mTxtGuarantee;
+    TextView mTxtMoni, mTxtNews, mTxtFinance, mTxtHelp, mTxtRadio, mTxtGuarantee, mGuijiOne, mGujiTwo,mGuojiThree;
     PullToRefreshExpandableListView mListView;
     ExpandableListView mBaseListView;
     HomeAdapter mAdapter;
@@ -58,7 +58,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     private void initView() {
         LayoutInflater lay = LayoutInflater.from(getActivity());
 //        xml加载头部视图
-        mHeaderView = lay.inflate(R.layout.a_home_head_view, null);
+        mHeaderView = lay. inflate(R.layout.a_home_head_view, null);
 
         mHeaderBanner = (BannerView) mHeaderView.findViewById(R.id.view_banner_home_header);
 
@@ -200,6 +200,10 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         });
     }
 
+
+    /**
+     * 菜单点击事件
+     */
     @Override
     public void onClick(View v) {
         Intent intent;

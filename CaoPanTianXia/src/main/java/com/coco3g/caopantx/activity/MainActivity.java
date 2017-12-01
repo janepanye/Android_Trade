@@ -49,7 +49,8 @@ import java.util.TimerTask;
 public class MainActivity extends BaseFragmentActivity implements View.OnClickListener {
     private TopBarView mTopBar;
     private FragmentManager mFragmentManager;
-    private BaseFragment mHomeFragment;
+//    BaseFragment 改成HomeFragment   PYDO
+    private HomeFragment mHomeFragment;
     private TransactionFragment mTransactionFragment;
     private RadioFragment mRadioFragment;
     private FindFragment mDiscoverFragment;

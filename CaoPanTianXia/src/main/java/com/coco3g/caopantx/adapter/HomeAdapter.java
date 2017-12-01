@@ -40,7 +40,7 @@ import android.widget.Toast;
 
 public class HomeAdapter extends BaseExpandableListAdapter {
 
-    Context mContext;
+    Context mContext;  //Context为HomeAdapter所在的Acitivity，可以获取Activity的Inflate
     ArrayList<ProGroupListDataBean> mList = new ArrayList<>();
 
     public HomeAdapter(Context mContext) {
@@ -51,6 +51,9 @@ public class HomeAdapter extends BaseExpandableListAdapter {
         mList = list;
     }
 
+    /**
+     * 清除列表
+     */
     public void clearList() {
         if (mList != null) {
             mList.clear();
@@ -58,6 +61,9 @@ public class HomeAdapter extends BaseExpandableListAdapter {
         }
     }
 
+    /**
+     * @return   section个数
+     */
     @Override
     public int getGroupCount() {
         return mList.size();
