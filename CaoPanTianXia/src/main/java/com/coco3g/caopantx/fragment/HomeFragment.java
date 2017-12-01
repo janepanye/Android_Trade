@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.coco3g.caopantx.activity.BaseFragment;
+import com.coco3g.caopantx.activity.GuoJiActivity;
 import com.coco3g.caopantx.activity.MoNiTransActivity;
 import com.coco3g.caopantx.activity.WebActivity;
 import com.coco3g.caopantx.adapter.HomeAdapter;
@@ -38,7 +39,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     View mHeaderView;
     LinearLayout mLinearHeaderMenu;
     BannerView mHeaderBanner;
-    TextView mTxtMoni, mTxtNews, mTxtFinance, mTxtHelp, mTxtRadio, mTxtGuarantee, mGuijiOne, mGujiTwo,mGuojiThree;
+    TextView mTxtMoni, mTxtNews, mTxtFinance, mTxtHelp, mTxtRadio, mTxtGuarantee, mGuijiSection,mGuijiOne, mGujiTwo,mGuojiThree;
     PullToRefreshExpandableListView mListView;
     ExpandableListView mBaseListView;
     HomeAdapter mAdapter;
@@ -70,6 +71,8 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         mTxtHelp = (TextView) mHeaderView.findViewById(R.id.tv_home_help);
         mTxtRadio = (TextView) mHeaderView.findViewById(R.id.tv_home_radio);
         mTxtGuarantee = (TextView) mHeaderView.findViewById(R.id.tv_home_guarantee);
+
+        mGuijiSection = (TextView) mHeaderView.findViewById(R.id.list_item_all_guoji);
 
 
         mListView = (PullToRefreshExpandableListView) view.findViewById(R.id.listview_home);
@@ -116,6 +119,8 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         mTxtHelp.setOnClickListener(this);
         mTxtRadio.setOnClickListener(this);
         mTxtGuarantee.setOnClickListener(this);
+
+        mGuijiSection.setOnClickListener(this);
     }
 
     /**
@@ -243,6 +248,13 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                 intent.putExtra("url", DataUrl.BASE_URL + "/Home/index/guarantee");
                 startActivity(intent);
                 break;
+
+
+            case R.id.list_item_all_guoji:
+                intent = new Intent(getActivity(), GuoJiActivity.class);
+                startActivity(intent);
+                break;
+
         }
     }
 }
