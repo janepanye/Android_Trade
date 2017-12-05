@@ -46,7 +46,29 @@ public class SocketRequestPresenter implements ISocketRequestModel {
      */
     @Override
     public void transList(String param, final ITransListListener listener) {
-        Log.e("param", param + "--");
+        Log.e("param", param + "--");/*
+    /*
+       "response": [
+        {
+            "title": "\u94c1\u77ff\u77f3",
+            "tid": "30",
+            "prono": "I1805",
+            "catid": "14",
+            "nums": "100",
+            "money": "7",
+            "zhang": [
+
+            ],
+            "die": [
+
+            ],
+            "order_nums": "0",
+            "leftName": "\u8d22\u7ecf\u8d44\u8baf",
+            "rightName": "\u4eca\u65e5\u5934\u6761",
+            "task": "\u4efb\u52a1\u4e2d\u5fc3",
+            "peixun": "\u57f9\u8bad"
+        },
+     */
         try {
             mWebSocket.setModeData(new TransListDataBean()).addParam(param).setOnSocketReturnListener(new WebSocketConnection.OnSocketListener() {
                 @Override
@@ -66,6 +88,7 @@ public class SocketRequestPresenter implements ISocketRequestModel {
             e.printStackTrace();
         }
     }
+
 
     /**
      * 获取产品详细信息

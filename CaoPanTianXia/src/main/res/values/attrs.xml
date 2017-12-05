@@ -56,5 +56,22 @@
 
     </declare-styleable>
 
+ <!-- 自定义app属性-->
+    <declare-styleable name="MyTemplate">
+        <attr name="headIcon" format="reference"/>
+        <attr name="headTitle" format="reference|string"/>
+        <attr name="headMore" format="reference|string"/>
+        <attr name="oneHead" format="reference|string"/>
+        <attr name="oneCenter" format="reference|string"/>
+        <attr name="oneFoot" format="reference|string"/>
+        <attr name="twoHead" format="reference|string"/>
+        <attr name="twoCenter" format="reference|string"/>
+        <attr name="twoFoot" format="reference|string"/>
+        <attr name="threeHead" format="reference|string"/>
+        <attr name="threeCenter" format="reference|string"/>
+        <attr name="threeFoot" format="reference|string"/>
+    </declare-styleable>
+
+
 
 </resources>

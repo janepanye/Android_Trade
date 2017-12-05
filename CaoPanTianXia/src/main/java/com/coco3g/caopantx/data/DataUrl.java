@@ -142,7 +142,8 @@ public class DataUrl {
      * 个人资料url
      */
 
-    public static final String CONTACTUS = BASE_URL + "/Home/index/help.html";
+//    public static final String CONTACTUS = BASE_URL + "/Home/index/help.html";
+    public static final String CONTACTUS = BASE_URL + "/Member/index/service.html";
     /**
      * 设置url
      */

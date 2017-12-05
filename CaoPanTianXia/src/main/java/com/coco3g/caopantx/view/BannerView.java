@@ -86,7 +86,7 @@ public class BannerView extends RelativeLayout implements OnPageChangeListener {
         mView = lay.inflate(R.layout.view_banner, this);
         mViewpagerBanner = (ViewPager) mView.findViewById(R.id.viewpager_banner);
         mPoints = (BannerSelectPointView) mView.findViewById(R.id.viewpage_banner_point);
-        mViewpagerBanner.setOnPageChangeListener(this);
+        mViewpagerBanner.addOnPageChangeListener(this);
         mViewpagerBanner.setOnTouchListener(new OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {

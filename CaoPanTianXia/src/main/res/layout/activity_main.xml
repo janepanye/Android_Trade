@@ -5,6 +5,31 @@
     android:clipToPadding="true"
     android:fitsSystemWindows="true">
 
+
+    <!--<LinearLayout-->
+        <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+        <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:orientation="vertical">-->
+
+        <!--<com.coco3g.caopantx.view.MyTemplate-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--app:headIcon="@mipmap/pic_toast_bg"-->
+            <!--app:headMore="更多"-->
+            <!--app:headTitel="国际"-->
+            <!--app:oneCenter="一中"-->
+            <!--app:oneFoot="一尾"-->
+            <!--app:oneHead="一头"-->
+            <!--app:threeCenter="三种"-->
+            <!--app:threeFoot="三尾"-->
+            <!--app:threeHead="三头"-->
+            <!--app:twoCenter="二中"-->
+            <!--app:twoFoot="二尾"-->
+            <!--app:twoHead="二头"/>-->
+    <!--</LinearLayout>-->
+
     <LinearLayout
         android:id="@+id/main_linear_top"
         android:layout_width="match_parent"

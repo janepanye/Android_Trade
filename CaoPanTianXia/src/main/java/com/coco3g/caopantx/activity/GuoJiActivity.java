@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -104,6 +105,7 @@ public class GuoJiActivity extends BaseActivity {
         mSocketPresenter.transList("{\"command\":\"binduid\",\"uid\":\"get_hangqing\"}", new ITransListListener() {
             @Override
             public void onSuccess(TransListDataBean data) {
+
                 ArrayList<TransListDataBean.TransData> list = data.data;
                 if (mGuoJiAdapter != null && mGuoJiAdapter.getList() != null && mGuoJiAdapter.getList().size() > 0) {
                     ArrayList<TransListDataBean.TransData> oldlist = mGuoJiAdapter.getList();
@@ -122,6 +124,7 @@ public class GuoJiActivity extends BaseActivity {
                                 itemdata.order_nums = olditemdata.order_nums;
 //                                itemdata.lastprice = olditemdata.lastprice;
                                 newlist.add(itemdata);
+                                Log.d("Socket", "onSuccess: "+ newlist);
                                 break;
                             }
                         }

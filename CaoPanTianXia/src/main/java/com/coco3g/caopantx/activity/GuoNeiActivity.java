@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -44,7 +45,7 @@ public class GuoNeiActivity extends BaseActivity {
 
     private void initView() {
         mTopBar = (TopBarView) findViewById(R.id.topbar_guoji);
-        mTopBar.setTitle("国内期货");
+        mTopBar.setTitle("国内期货");  //不起作用？？
         mGuoNeiListView = (PullToRefreshListView) findViewById(R.id.listview_guoji);
 
         mGuoNeiListView.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
@@ -96,13 +97,16 @@ public class GuoNeiActivity extends BaseActivity {
         });
     }
 
+    private static final String TAG = "GuoNeiActivity";
     /**
      * 通过socket获取实时行情数据
      */
     private void getTransListSocketData() {
+
         mSocketPresenter.transList("{\"command\":\"binduid\",\"uid\":\"get_hangqing\"}", new ITransListListener() {
             @Override
             public void onSuccess(TransListDataBean data) {
+
                 ArrayList<TransListDataBean.TransData> list = data.data;
                 if (mGuoNeiAdapter != null && mGuoNeiAdapter.getList() != null && mGuoNeiAdapter.getList().size() > 0) {
                     ArrayList<TransListDataBean.TransData> oldlist = mGuoNeiAdapter.getList();
