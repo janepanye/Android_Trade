@@ -66,7 +66,7 @@ public class MyTemplate extends LinearLayout implements View.OnClickListener {
             String twoCenter = a.getString(R.styleable.MyTemplate_twoCenter);
             setTwoCenterText(twoCenter);
 
-            String threeCenter = a.getString(R.styleable.MyTemplate_oneCenter);
+            String threeCenter = a.getString(R.styleable.MyTemplate_threeCenter);
             setThreeCenterText(threeCenter);
 
             String oneFoot = a.getString(R.styleable.MyTemplate_oneFoot);

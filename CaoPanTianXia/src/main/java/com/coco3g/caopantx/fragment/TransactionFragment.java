@@ -64,6 +64,10 @@ public class TransactionFragment extends BaseFragment {
         return view;
     }
 
+
+    /**
+     * 初始化
+     */
     private void initView() {
         mGuoJiListView = (PullToRefreshListView) view.findViewById(R.id.transaction_listview_guoji);
         mGuoNeiListView = (PullToRefreshListView) view.findViewById(R.id.transaction_listview_guonei);
@@ -93,7 +97,8 @@ public class TransactionFragment extends BaseFragment {
 
             }
         });
-        //点击国际seg
+
+        //点击进入国际下单详情
         mGuoJiListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -104,7 +109,7 @@ public class TransactionFragment extends BaseFragment {
                 startActivity(intent);
             }
         });
-        //点击国内seg
+        //点击进入国内下单详情
         mGuoNeiListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
