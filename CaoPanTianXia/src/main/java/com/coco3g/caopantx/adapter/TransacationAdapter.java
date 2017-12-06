@@ -16,6 +16,10 @@ import java.util.ArrayList;
 /**
  * Created by MIN on 16/6/15.
  */
+/**
+ * Adpaters实现getCount，getItem，getItemId，getView四个方法
+ */
+
 public class TransacationAdapter extends BaseAdapter {
     private Context mContext;
     private ArrayList<TransListDataBean.TransData> mList = new ArrayList<>();
@@ -52,20 +56,34 @@ public class TransacationAdapter extends BaseAdapter {
         }
     }
 
+    /**
+     * @param type 提供接口判断是模拟还是是实盘
+     *
+     */
     public void setType(int type) {
         this.mMoNi = type;
     }
 
+
+    /**
+     * 要绑定的条目的数目
+     */
     @Override
     public int getCount() {
         return mList.size();
     }
 
+    /**
+     * 根据一个索引（位置）获得该位置的对象
+     */
     @Override
     public Object getItem(int position) {
         return mList.get(position);
     }
 
+    /**
+     * 获取条目的id
+     */
     @Override
     public long getItemId(int position) {
         return position;
@@ -73,6 +91,9 @@ public class TransacationAdapter extends BaseAdapter {
 
     private ViewHolder holder;
 
+    /**
+     * 获取该条目要显示的界面
+     */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {

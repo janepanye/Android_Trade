@@ -1,8 +1,11 @@
 package com.coco3g.caopantx.fragment;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,19 +22,24 @@ import com.coco3g.caopantx.activity.GuoJiActivity;
 import com.coco3g.caopantx.activity.MoNiTransActivity;
 import com.coco3g.caopantx.activity.WebActivity;
 import com.coco3g.caopantx.adapter.HomeAdapter;
+import com.coco3g.caopantx.adapter.TransacationAdapter;
 import com.coco3g.caopantx.bean.BannerListData;
 import com.coco3g.caopantx.bean.BaseData;
 import com.coco3g.caopantx.bean.ProGroupListDataBean;
+import com.coco3g.caopantx.bean.TransListDataBean;
 import com.coco3g.caopantx.data.DataUrl;
 import com.coco3g.caopantx.listener.IProListListener;
+import com.coco3g.caopantx.listener.ITransListListener;
 import com.coco3g.caopantx.presenter.BannerListPresenter;
 import com.coco3g.caopantx.presenter.ProListPresenter;
 import com.coco3g.caopantx.R;
 import com.coco3g.caopantx.activity.K_DetailActivity;
 import com.coco3g.caopantx.bean.ProChildListDataBean;
 import com.coco3g.caopantx.listener.IBannerListener;
+import com.coco3g.caopantx.presenter.SocketRequestPresenter;
 import com.coco3g.caopantx.view.BannerView;
 import com.coco3g.caopantx.view.ExpandableGridView;
+import com.coco3g.caopantx.view.MyTemplate;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshExpandableListView;
 
@@ -277,10 +285,16 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     View mHeaderView;
     LinearLayout mLinearHeaderMenu;
     BannerView mHeaderBanner;
-    TextView  mGuijiSection,mGuijiOne, mGujiTwo,mGuojiThree;
+    MyTemplate mOutsideExit,mInsideExit;
+
+    TextView  mGuijiOne, mGujiTwo,mGuojiThree;
     PullToRefreshExpandableListView mListView;
     ExpandableListView mBaseListView;
     HomeAdapter mAdapter;
+
+
+    SocketRequestPresenter mSocketPresenter;
+    private TransacationAdapter mGuoJiAdapter, mGuoNeiAdapter;
 
 
     private ExpandableGridView mAppGridView = null;
@@ -301,10 +315,22 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home, null);
-        initView();
+
+        mGuoJiAdapter = new TransacationAdapter(getActivity());
+        mGuoNeiAdapter = new TransacationAdapter(getActivity());
+        mGuoJiAdapter.setType(0);
+        mGuoNeiAdapter.setType(0);
         mAdapter = new HomeAdapter(getActivity());
+
+        initView();
+
         getBnnerList();
         getGuoNeiProList();
+
+        //获取socket数据
+        mSocketPresenter = new SocketRequestPresenter(getActivity());
+
+        getTransListSocketData();
         return view;
     }
 
@@ -316,10 +342,16 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
         mHeaderBanner = (BannerView) mHeaderView.findViewById(R.id.view_banner_home_header);
 
-        mLinearHeaderMenu = (LinearLayout) mHeaderView.findViewById(R.id.linear_home_header_menu1);
 
 
-        mGuijiSection = (TextView) mHeaderView.findViewById(R.id.list_item_all_guoji);
+//        mLinearHeaderMenu = (LinearLayout) mHeaderView.findViewById(R.id.linear_home_header_menu1);
+
+        //获取menu菜单项
+        mAppGridView = (ExpandableGridView) mHeaderView.findViewById(R.id.menu_gridView); // step1
+
+        mInsideExit = (MyTemplate) mHeaderView.findViewById(R.id.menu_list_guonei);
+        mOutsideExit = (MyTemplate) mHeaderView.findViewById(R.id.menu_list_guoji);
+
 
         mListView = (PullToRefreshExpandableListView) view.findViewById(R.id.listview_home);
 
@@ -330,8 +362,9 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         mListView.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
 
 
-        //获取界面组件
-        mAppGridView = (ExpandableGridView) mHeaderView.findViewById(R.id.menu_gridView); // step1
+
+
+
 
         //初始化数据
         List<Map<String,Object>> listItems = new ArrayList<>();
@@ -548,6 +581,99 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         }
     }
 
+
+    /**
+     * 通过socket获取实时行情数据
+     */
+    private void getTransListSocketData() {
+        mSocketPresenter.transList("{\"command\":\"binduid\",\"uid\":\"get_hangqing\"}", new ITransListListener() {
+            @Override
+            public void onSuccess(TransListDataBean data) {
+
+                ArrayList<TransListDataBean.TransData> arrayList = data.data;
+
+
+
+//                        ArrayList<TransListDataBean.TransData> oldlist = mGuoJiAdapter.getList();
+//                        ArrayList<TransListDataBean.TransData> newlist = new ArrayList<>();
+//                        for (int i = 0; i < oldlist.size(); i++) {
+//                            TransListDataBean.TransData olditemdata = oldlist.get(i);
+//                            String prono = olditemdata.prono;
+//                            for (int j = 0; j < arrayList.size(); j++) {
+//                                TransListDataBean.TransData itemdata = arrayList.get(j);
+//                                if (prono.equalsIgnoreCase(itemdata.prono)) {
+//                                    itemdata.title = olditemdata.title;
+//                                    itemdata.tid = olditemdata.tid;
+//                                    itemdata.nums = olditemdata.nums;
+//                                    itemdata.zhang = olditemdata.zhang;
+//                                    itemdata.die = olditemdata.die;
+//                                    itemdata.perprice = olditemdata.perprice;
+//                                    itemdata.lastprice = olditemdata.lastprice;
+//                                    itemdata.order_nums = olditemdata.order_nums;
+
+//                                newlist.add(itemdata);
+//                                break;
+
+//                            }
+//                        }
+                            Message message = new Message();
+                            message.obj = arrayList;
+                            mHandlerRefreshView.sendMessage(message);
+//                        }
+
+            }
+
+            @Override
+            public void onFailure(BaseData data) {
+
+            }
+
+            @Override
+            public void onError() {
+
+            }
+        });
+    }
+
+    /**
+     * 获取实时行情后，刷新相关view
+     */
+
+    Handler mHandlerRefreshView = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+
+            ArrayList<TransListDataBean.TransData> m = (ArrayList<TransListDataBean.TransData>) msg.obj;
+
+            if (m != null && m.size() > 3){
+                TransListDataBean.TransData itemdata =  m.get(0);
+                mInsideExit.setOneHeadText(itemdata.prono);
+                mInsideExit.setOneCenterText(itemdata.lastprice);
+                mInsideExit.setOneFootText(itemdata.perprice);
+
+                TransListDataBean.TransData itemdataTwo =  m.get(1);
+                mInsideExit.setTwoHeadText(itemdataTwo.prono);
+                mInsideExit.setTwoCenterText(itemdataTwo.lastprice);
+                mInsideExit.setTwoFootText(itemdataTwo.perprice);
+
+                TransListDataBean.TransData itemdataThr =  m.get(2);
+                mInsideExit.setThreeHeadText(itemdataThr.title);
+                mInsideExit.setThreeCenterText(itemdataThr.lastprice);
+                mInsideExit.setThreeFootText(itemdataThr.perprice);
+            }
+
+            mGuoJiAdapter.updateListData((ArrayList<TransListDataBean.TransData>) msg.obj);
+        }
+    };
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (mSocketPresenter != null) {
+            mSocketPresenter.closeSocket();
+        }
+    }
 
 
 }

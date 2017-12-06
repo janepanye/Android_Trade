@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -69,6 +70,7 @@ public class MoNiTransActivity extends BaseActivity {
                 }
             }
         });
+//          点击持仓明细
         mTopBar.setOnClickTopRight(new TopBarView.OnClickTopRight(){
             @Override
                 public void onClickTopRight(){
@@ -112,7 +114,7 @@ public class MoNiTransActivity extends BaseActivity {
         });
 
 
-        //
+
         mGuoJiListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -175,6 +177,7 @@ public class MoNiTransActivity extends BaseActivity {
             @Override
             public void onSuccess(TransListDataBean data) {
                 ArrayList<TransListDataBean.TransData> list = data.data;
+//                Log.d("Socket数据", data.data.toString());
                 if (mCurrType == 15) {
                     if (mGuoJiAdapter != null && mGuoJiAdapter.getList() != null && mGuoJiAdapter.getList().size() > 0) {
                         ArrayList<TransListDataBean.TransData> oldlist = mGuoJiAdapter.getList();
@@ -282,6 +285,9 @@ public class MoNiTransActivity extends BaseActivity {
         }
     }
 
+    /**
+     * onDestroy关闭心跳
+     */
     @Override
     protected void onDestroy() {
         super.onDestroy();
