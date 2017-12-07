@@ -1,6 +1,6 @@
 package com.coco3g.caopantx.fragment;
 
-import android.annotation.SuppressLint;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -37,6 +37,7 @@ import com.coco3g.caopantx.activity.K_DetailActivity;
 import com.coco3g.caopantx.bean.ProChildListDataBean;
 import com.coco3g.caopantx.listener.IBannerListener;
 import com.coco3g.caopantx.presenter.SocketRequestPresenter;
+import com.coco3g.caopantx.presenter.TransPresenter;
 import com.coco3g.caopantx.view.BannerView;
 import com.coco3g.caopantx.view.ExpandableGridView;
 import com.coco3g.caopantx.view.MyTemplate;
@@ -48,246 +49,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
-// * Created by MIN on 16/6/13.
-// */
-//public class HomeFragment extends BaseFragment implements View.OnClickListener {
-//    View view;
-//    View mHeaderView;
-//    LinearLayout mLinearHeaderMenu;
-//    BannerView mHeaderBanner;
-//    TextView mTxtMoni, mTxtNews, mTxtFinance, mTxtHelp, mTxtRadio, mTxtGuarantee, mGuijiSection,mGuijiOne, mGujiTwo,mGuojiThree;
-//    PullToRefreshExpandableListView mListView;
-//    ExpandableListView mBaseListView;
-//    HomeAdapter mAdapter;
-//
-//
-//    //
-//    ArrayList<ProGroupListDataBean> mCurrAllData = new ArrayList<>();
-//
-//    @Override
-//    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-//        view = inflater.inflate(R.layout.fragment_home, null);
-//        initView();
-//        mAdapter = new HomeAdapter(getActivity());
-//        getBnnerList();
-//        getGuoNeiProList();
-//        return view;
-//    }
-//
-//    private void initView() {
-//        LayoutInflater lay = LayoutInflater.from(getActivity());
-////        xml加载头部视图
-//        mHeaderView = lay. inflate(R.layout.a_home_head_view, null);
-//
-//        mHeaderBanner = (BannerView) mHeaderView.findViewById(R.id.view_banner_home_header);
-//
-//        mLinearHeaderMenu = (LinearLayout) mHeaderView.findViewById(R.id.linear_home_header_menu);
-//
-//        mTxtMoni = (TextView) mHeaderView.findViewById(R.id.tv_home_moni);
-//        mTxtNews = (TextView) mHeaderView.findViewById(R.id.tv_home_news);
-//        mTxtFinance = (TextView) mHeaderView.findViewById(R.id.tv_home_finance);
-//        mTxtHelp = (TextView) mHeaderView.findViewById(R.id.tv_home_help);
-//        mTxtRadio = (TextView) mHeaderView.findViewById(R.id.tv_home_radio);
-//        mTxtGuarantee = (TextView) mHeaderView.findViewById(R.id.tv_home_guarantee);
-//
-//        mGuijiSection = (TextView) mHeaderView.findViewById(R.id.list_item_all_guoji);
-//
-//
-//        mListView = (PullToRefreshExpandableListView) view.findViewById(R.id.listview_home);
-//        mBaseListView = mListView.getRefreshableView();
-//
-//        mBaseListView.addHeaderView(mHeaderView);
-//        mBaseListView.setGroupIndicator(null);
-//        mListView.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
-//        //
-//        mListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ExpandableListView>() {
-//            @Override
-//            public void onPullDownToRefresh(PullToRefreshBase<ExpandableListView> refreshView) {
-//                mAdapter.clearList();
-//                getGuoNeiProList();
-//            }
-//
-//            @Override
-//            public void onPullUpToRefresh(PullToRefreshBase<ExpandableListView> refreshView) {
-//
-//            }
-//        });
-//        //
-//        mBaseListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
-//            @Override
-//            public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
-//                return true;
-//            }
-//        });
-//        mBaseListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-//            @Override
-//            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-//                Intent intent = new Intent(getActivity(), K_DetailActivity.class);
-//                intent.putExtra("id", mCurrAllData.get(groupPosition).groupList.get(childPosition).tid);
-//                intent.putExtra("device", "Android");
-//                intent.putExtra("moni", "0");
-//                startActivity(intent);
-//                return true;
-//            }
-//        });
-//
-//        mTxtMoni.setOnClickListener(this);
-//        mTxtNews.setOnClickListener(this);
-//        mTxtFinance.setOnClickListener(this);
-//        mTxtHelp.setOnClickListener(this);
-//        mTxtRadio.setOnClickListener(this);
-//        mTxtGuarantee.setOnClickListener(this);
-//
-//        mGuijiSection.setOnClickListener(this);
-//    }
-//
-//    /**
-//     * 获取banner
-//     */
-//    private void getBnnerList() {
-//        new BannerListPresenter(getActivity()).getBannerList("16", "Android", new IBannerListener() {
-//            @Override
-//            public void onSuccess(BannerListData data) {
-//                ArrayList<BannerListData.Banner> piclist = data.response;
-//                if (piclist != null && piclist.size() > 0) {
-//                    mHeaderBanner.setList(piclist);
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(BaseData data) {
-//
-//            }
-//
-//            @Override
-//            public void onError() {
-//
-//            }
-//        });
-//    }
-//
-//
-//    /**
-//     * 获取外盘产品列表数据
-//     */
-//    private void getGuoNeiProList() {
-//        new ProListPresenter(getActivity()).getProList("14", "Android", new IProListListener() {
-//            @Override
-//            public void onSuccess(ProChildListDataBean data) {
-//                mListView.onRefreshComplete();
-//                ProGroupListDataBean guoneiItemdata = new ProGroupListDataBean();
-//                guoneiItemdata.name = "国内期货推荐";
-//                guoneiItemdata.groupList = data.response;
-//                mCurrAllData.add(guoneiItemdata);
-//                getGuoJiProList();
-//            }
-//            @Override
-//            public void onFailure(BaseData data) {
-//                mListView.onRefreshComplete();
-//            }
-//
-//            @Override
-//            public void onError() {
-//                mListView.onRefreshComplete();
-//            }
-//        });
-//    }
-//    /**
-//     * 获取外盘产品列表数据
-//     */
-//    private void getGuoJiProList() {
-//        new ProListPresenter(getActivity()).getProList("15", "Android", new IProListListener() {
-//            @Override
-//            public void onSuccess(ProChildListDataBean data) {
-//                ProGroupListDataBean guojiItemdata = new ProGroupListDataBean();
-//                guojiItemdata.name = "国际期货推荐";
-//                guojiItemdata.groupList = data.response;
-//                mCurrAllData.add(guojiItemdata);
-//                mAdapter.setList(mCurrAllData);
-//                mBaseListView.setAdapter(mAdapter);
-//                //
-//                for (int i = 0; i < mCurrAllData.size(); i++) {
-//                    mBaseListView.expandGroup(i);
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(BaseData data) {
-//
-//            }
-//
-//            @Override
-//            public void onError() {
-//
-//            }
-//        });
-//    }
-//
-//
-//    /**
-//     * 菜单点击事件
-//     */
-//    @Override
-//    public void onClick(View v) {
-//        Intent intent;
-//        switch (v.getId()) {
-//
-//            case R.id.tv_home_moni:
-//                intent = new Intent(getActivity(), MoNiTransActivity.class);
-//                startActivity(intent);
-//                break;
-//
-//            case R.id.tv_home_news:
-//                intent = new Intent(getActivity(), WebActivity.class);
-//                intent.putExtra("url", DataUrl.BASE_URL + "/content/index/news");
-//                startActivity(intent);
-//                break;
-//
-//            case R.id.tv_home_finance:
-//                intent = new Intent(getActivity(), WebActivity.class);
-//                intent.putExtra("url", DataUrl.JINSHISHUJU );    //DataUrl.BASE_URL + "/Member/index/tuiguang.html"
-//                startActivity(intent);
-//                break;
-//
-//            case R.id.tv_home_help:
-//                intent = new Intent(getActivity(), WebActivity.class);
-//                intent.putExtra("url", DataUrl.BASE_URL + "/content/index/lists/catid/3");
-//                startActivity(intent);
-//                break;
-//
-//            case R.id.tv_home_radio:
-//                intent = new Intent(getActivity(), WebActivity.class);
-//                intent.putExtra("url", DataUrl.BASE_URL + "/Member/index/zhibo_list");
-//                startActivity(intent);
-//                break;
-//
-//            case R.id.tv_home_guarantee:
-//                intent = new Intent(getActivity(), WebActivity.class);
-//                intent.putExtra("url", DataUrl.BASE_URL + "/Home/index/guarantee");
-//                startActivity(intent);
-//                break;
-//
-//
-//            case R.id.list_item_all_guoji:
-//                intent = new Intent(getActivity(), GuoJiActivity.class);
-//                startActivity(intent);
-//                break;
-//
-//        }
-//    }
-//}
 
 
 
 public class HomeFragment extends BaseFragment implements View.OnClickListener {
     View view;
     View mHeaderView;
-    LinearLayout mLinearHeaderMenu;
     BannerView mHeaderBanner;
     MyTemplate mOutsideExit,mInsideExit;
+    private int mCurrType = 15;//当前的期货类别， 15 国际期货  14 国内期货
 
-    TextView  mGuijiOne, mGujiTwo,mGuojiThree;
     PullToRefreshExpandableListView mListView;
     ExpandableListView mBaseListView;
     HomeAdapter mAdapter;
@@ -298,7 +69,6 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
 
     private ExpandableGridView mAppGridView = null;
-    private List<Map<String, Object>> dataList;
     private SimpleAdapter simpAdapter;
 
     private int[] mAppIcons = {R.mipmap.pic_home_micp_1, R.mipmap.pic_home_news_1,
@@ -320,17 +90,20 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         mGuoNeiAdapter = new TransacationAdapter(getActivity());
         mGuoJiAdapter.setType(0);
         mGuoNeiAdapter.setType(0);
+
         mAdapter = new HomeAdapter(getActivity());
 
         initView();
 
-        getBnnerList();
+        getBannerList();
+
         getGuoNeiProList();
 
-        //获取socket数据
-        mSocketPresenter = new SocketRequestPresenter(getActivity());
 
-        getTransListSocketData();
+        getGuojiTransList();
+
+        getGuoneiTransList();
+
         return view;
     }
 
@@ -343,14 +116,13 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         mHeaderBanner = (BannerView) mHeaderView.findViewById(R.id.view_banner_home_header);
 
 
-
-//        mLinearHeaderMenu = (LinearLayout) mHeaderView.findViewById(R.id.linear_home_header_menu1);
-
         //获取menu菜单项
         mAppGridView = (ExpandableGridView) mHeaderView.findViewById(R.id.menu_gridView); // step1
 
-        mInsideExit = (MyTemplate) mHeaderView.findViewById(R.id.menu_list_guonei);
         mOutsideExit = (MyTemplate) mHeaderView.findViewById(R.id.menu_list_guoji);
+        mInsideExit = (MyTemplate) mHeaderView.findViewById(R.id.menu_list_guonei);
+
+
 
 
         mListView = (PullToRefreshExpandableListView) view.findViewById(R.id.listview_home);
@@ -481,7 +253,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     /**
      * 获取banner
      */
-    private void getBnnerList() {
+    private void getBannerList() {
         new BannerListPresenter(getActivity()).getBannerList("16", "Android", new IBannerListener() {
             @Override
             public void onSuccess(BannerListData data) {
@@ -501,6 +273,291 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
             }
         });
+    }
+
+
+
+
+    /**
+     * 获取国际期货列表
+     */
+    private void getGuojiTransList() {
+        new TransPresenter(getActivity()).getTransList( "15", "Android", "0", new ITransListListener() {
+            @Override
+            public void onSuccess(TransListDataBean data) {
+                mGuoJiAdapter.clearList();
+
+                mGuoJiAdapter.setList(data.response);
+
+                if (mSocketPresenter != null) {
+                    mSocketPresenter.closeSocket();
+                    mSocketPresenter = null;
+                }
+                if (mSocketPresenter == null) {
+                    // 获取交易列表实时数据
+                    mSocketPresenter = new SocketRequestPresenter(getActivity());
+                    getTransListSocketData();
+                }
+
+            }
+
+            @Override
+            public void onFailure(BaseData data) {
+
+            }
+
+            @Override
+            public void onError() {
+
+            }
+        });
+    }
+
+
+    private void getGuoneiTransList() {
+        new TransPresenter(getActivity()).getTransList( "14", "Android", "0", new ITransListListener() {
+            @Override
+            public void onSuccess(TransListDataBean data) {
+
+                mGuoNeiAdapter.clearList();
+
+
+//                if (mCurrType == 15) {
+//                    mGuoJiAdapter.setList(data.response);
+//
+//                } else if (mCurrType == 14) {
+                    mGuoNeiAdapter.setList(data.response);
+
+//                }
+
+                if (mSocketPresenter != null) {
+                    mSocketPresenter.closeSocket();
+                    mSocketPresenter = null;
+                }
+                if (mSocketPresenter == null) {
+                    // 获取交易列表实时数据
+                    mSocketPresenter = new SocketRequestPresenter(getActivity());
+                    getTransListSocketData();
+                }
+
+            }
+
+            @Override
+            public void onFailure(BaseData data) {
+
+            }
+
+            @Override
+            public void onError() {
+
+            }
+        });
+    }
+
+
+
+    private void getTransListSocketData() {
+        mSocketPresenter.transList("{\"command\":\"binduid\",\"uid\":\"get_hangqing\"}", new ITransListListener() {
+            @Override
+            public void onSuccess(TransListDataBean data) {
+                ArrayList<TransListDataBean.TransData> list = data.data;
+
+//                if (mCurrType == 15) {
+                    if (mGuoJiAdapter != null && mGuoJiAdapter.getList() != null && mGuoJiAdapter.getList().size() > 0) {
+                        ArrayList<TransListDataBean.TransData> oldlist = mGuoJiAdapter.getList();
+                        ArrayList<TransListDataBean.TransData> newlist = new ArrayList<>();
+                        for (int i = 0; i < oldlist.size(); i++) {
+                            TransListDataBean.TransData olditemdata = oldlist.get(i);
+                            String prono = olditemdata.prono;
+                            for (int j = 0; j < list.size(); j++) {
+                                TransListDataBean.TransData itemdata = list.get(j);
+                                if (prono.equalsIgnoreCase(itemdata.prono)) {
+                                    itemdata.title = olditemdata.title;
+                                    itemdata.tid = olditemdata.tid;
+                                    itemdata.nums = olditemdata.nums;
+                                    itemdata.zhang = olditemdata.zhang;
+                                    itemdata.die = olditemdata.die;
+                                    itemdata.order_nums = olditemdata.order_nums;
+                                    newlist.add(itemdata);
+                                    break;
+                                }
+                            }
+//                        }
+                        Message message = new Message();
+                        message.obj = newlist;
+                        mHandlerRefreshView.sendMessage(message);
+                    }
+                }
+//                else if (mCurrType == 14) {
+                    if (mGuoNeiAdapter != null && mGuoNeiAdapter.getList() != null && mGuoNeiAdapter.getList().size() > 0) {
+                        ArrayList<TransListDataBean.TransData> oldlist = mGuoNeiAdapter.getList();
+                        ArrayList<TransListDataBean.TransData> newlist = new ArrayList<>();
+                        for (int i = 0; i < oldlist.size(); i++) {
+                            TransListDataBean.TransData olditemdata = oldlist.get(i);
+                            String prono = olditemdata.prono;
+                            for (int j = 0; j < list.size(); j++) {
+                                TransListDataBean.TransData itemdata = list.get(j);
+                                if (prono.equalsIgnoreCase(itemdata.prono)) {
+                                    itemdata.title = olditemdata.title;
+                                    itemdata.tid = olditemdata.tid;
+                                    itemdata.nums = olditemdata.nums;
+                                    itemdata.zhang = olditemdata.zhang;
+                                    itemdata.die = olditemdata.die;
+                                    itemdata.order_nums = olditemdata.order_nums;
+                                    newlist.add(itemdata);
+                                    break;
+                                }
+                            }
+//                        }
+                        Message message = new Message();
+                        message.obj = newlist;
+                        mHandlerRefreshView1.sendMessage(message);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(BaseData data) {
+
+            }
+
+            @Override
+            public void onError() {
+
+            }
+        });
+    }
+
+
+
+
+    /**
+     * 获取实时行情后，刷新相关view
+     */
+
+    Handler mHandlerRefreshView = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+
+            ArrayList<TransListDataBean.TransData> m = (ArrayList<TransListDataBean.TransData>) msg.obj;
+
+
+
+            if (m != null && m.size() >= 3) {
+                TransListDataBean.TransData itemdata = m.get(0);
+
+
+
+                mOutsideExit.setOneHeadText(itemdata.title);
+                mOutsideExit.setOneCenterText(itemdata.lastprice);
+                mOutsideExit.setOneFootText(itemdata.perprice);
+
+                float rate = Float.parseFloat(itemdata.perprice);
+                if (rate < 0){
+                    mOutsideExit.setOneCenterColor(R.color.green);
+                    mOutsideExit.setOneFootColor(R.color.green);
+                }else {
+                    mOutsideExit.setOneCenterColor(R.color.red);
+                    mOutsideExit.setOneFootColor(R.color.red);
+                }
+
+
+                TransListDataBean.TransData itemdataTwo = m.get(1);
+                mOutsideExit.setTwoHeadText(itemdataTwo.title);
+                mOutsideExit.setTwoCenterText(itemdataTwo.lastprice);
+                mOutsideExit.setTwoFootText(itemdataTwo.perprice);
+
+                float rate1 = Float.parseFloat(itemdataTwo.perprice);
+                if (rate1 < 0){
+                    mOutsideExit.setTwoCenterColor(R.color.green);
+                    mOutsideExit.setTwoFootColor(R.color.green);
+                }else {
+                    mOutsideExit.setTwoCenterColor(R.color.red);
+                    mOutsideExit.setTwoFootColor(R.color.red);
+                }
+
+
+                TransListDataBean.TransData itemdataThr = m.get(2);
+                mOutsideExit.setThreeHeadText(itemdataThr.title);
+                mOutsideExit.setThreeCenterText(itemdataThr.lastprice);
+                mOutsideExit.setThreeFootText(itemdataThr.perprice);
+
+                float rate2 = Float.parseFloat(itemdataThr.perprice);
+                if (rate2 < 0){
+                    mOutsideExit.setThreeCenterColor(R.color.green);
+                    mOutsideExit.setThreeFootColor(R.color.green);
+                }else {
+                    mOutsideExit.setThreeCenterColor(R.color.red);
+                    mOutsideExit.setThreeFootColor(R.color.red);
+                }
+
+            }
+
+        }
+    };
+
+
+    Handler mHandlerRefreshView1 = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+
+            ArrayList<TransListDataBean.TransData> m = (ArrayList<TransListDataBean.TransData>) msg.obj;
+
+            if (m != null && m.size() >= 3){
+                TransListDataBean.TransData itemdata =  m.get(0);
+                mInsideExit.setOneHeadText(itemdata.title);
+                mInsideExit.setOneCenterText(itemdata.lastprice);
+                mInsideExit.setOneFootText(itemdata.perprice);
+                float rate = Float.parseFloat(itemdata.perprice);
+                if (rate < 0){
+                    mInsideExit.setOneCenterColor(R.color.green);
+                    mInsideExit.setOneFootColor(R.color.green);
+                }else {
+                    mInsideExit.setOneCenterColor(R.color.red);
+                    mInsideExit.setOneFootColor(R.color.red);
+                }
+
+
+                TransListDataBean.TransData itemdataTwo =  m.get(1);
+                mInsideExit.setTwoHeadText(itemdataTwo.title);
+                mInsideExit.setTwoCenterText(itemdataTwo.lastprice);
+                mInsideExit.setTwoFootText(itemdataTwo.perprice);
+
+                float rate1 = Float.parseFloat(itemdataTwo.perprice);
+                if (rate1 < 0){
+                    mInsideExit.setTwoCenterColor(R.color.green);
+                    mInsideExit.setTwoFootColor(R.color.green);
+                }else {
+                    mInsideExit.setTwoCenterColor(R.color.red);
+                    mInsideExit.setTwoFootColor(R.color.red);
+                }
+
+                TransListDataBean.TransData itemdataThr =  m.get(2);
+                mInsideExit.setThreeHeadText(itemdataThr.title);
+                mInsideExit.setThreeCenterText(itemdataThr.lastprice);
+                mInsideExit.setThreeFootText(itemdataThr.perprice);
+
+                float rate2 = Float.parseFloat(itemdataThr.perprice);
+                if (rate2 < 0){
+                    mInsideExit.setThreeCenterColor(R.color.green);
+                    mInsideExit.setThreeFootColor(R.color.green);
+                }else {
+                    mInsideExit.setThreeCenterColor(R.color.red);
+                    mInsideExit.setThreeFootColor(R.color.red);
+                }
+            }
+        }
+    };
+
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (mSocketPresenter != null) {
+            mSocketPresenter.closeSocket();
+        }
     }
 
 
@@ -578,100 +635,6 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                 startActivity(intent);
                 break;
 
-        }
-    }
-
-
-    /**
-     * 通过socket获取实时行情数据
-     */
-    private void getTransListSocketData() {
-        mSocketPresenter.transList("{\"command\":\"binduid\",\"uid\":\"get_hangqing\"}", new ITransListListener() {
-            @Override
-            public void onSuccess(TransListDataBean data) {
-
-                ArrayList<TransListDataBean.TransData> arrayList = data.data;
-
-
-
-//                        ArrayList<TransListDataBean.TransData> oldlist = mGuoJiAdapter.getList();
-//                        ArrayList<TransListDataBean.TransData> newlist = new ArrayList<>();
-//                        for (int i = 0; i < oldlist.size(); i++) {
-//                            TransListDataBean.TransData olditemdata = oldlist.get(i);
-//                            String prono = olditemdata.prono;
-//                            for (int j = 0; j < arrayList.size(); j++) {
-//                                TransListDataBean.TransData itemdata = arrayList.get(j);
-//                                if (prono.equalsIgnoreCase(itemdata.prono)) {
-//                                    itemdata.title = olditemdata.title;
-//                                    itemdata.tid = olditemdata.tid;
-//                                    itemdata.nums = olditemdata.nums;
-//                                    itemdata.zhang = olditemdata.zhang;
-//                                    itemdata.die = olditemdata.die;
-//                                    itemdata.perprice = olditemdata.perprice;
-//                                    itemdata.lastprice = olditemdata.lastprice;
-//                                    itemdata.order_nums = olditemdata.order_nums;
-
-//                                newlist.add(itemdata);
-//                                break;
-
-//                            }
-//                        }
-                            Message message = new Message();
-                            message.obj = arrayList;
-                            mHandlerRefreshView.sendMessage(message);
-//                        }
-
-            }
-
-            @Override
-            public void onFailure(BaseData data) {
-
-            }
-
-            @Override
-            public void onError() {
-
-            }
-        });
-    }
-
-    /**
-     * 获取实时行情后，刷新相关view
-     */
-
-    Handler mHandlerRefreshView = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-
-            ArrayList<TransListDataBean.TransData> m = (ArrayList<TransListDataBean.TransData>) msg.obj;
-
-            if (m != null && m.size() > 3){
-                TransListDataBean.TransData itemdata =  m.get(0);
-                mInsideExit.setOneHeadText(itemdata.prono);
-                mInsideExit.setOneCenterText(itemdata.lastprice);
-                mInsideExit.setOneFootText(itemdata.perprice);
-
-                TransListDataBean.TransData itemdataTwo =  m.get(1);
-                mInsideExit.setTwoHeadText(itemdataTwo.prono);
-                mInsideExit.setTwoCenterText(itemdataTwo.lastprice);
-                mInsideExit.setTwoFootText(itemdataTwo.perprice);
-
-                TransListDataBean.TransData itemdataThr =  m.get(2);
-                mInsideExit.setThreeHeadText(itemdataThr.title);
-                mInsideExit.setThreeCenterText(itemdataThr.lastprice);
-                mInsideExit.setThreeFootText(itemdataThr.perprice);
-            }
-
-            mGuoJiAdapter.updateListData((ArrayList<TransListDataBean.TransData>) msg.obj);
-        }
-    };
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        if (mSocketPresenter != null) {
-            mSocketPresenter.closeSocket();
         }
     }
 

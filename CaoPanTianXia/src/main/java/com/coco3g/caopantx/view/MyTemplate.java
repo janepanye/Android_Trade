@@ -1,6 +1,7 @@
 package com.coco3g.caopantx.view;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
 import android.support.v7.internal.widget.TintTypedArray;
@@ -161,6 +162,13 @@ public class MyTemplate extends LinearLayout implements View.OnClickListener {
 
     public void setOneCenterText(String str) {
         tvOneCenter.setText(str);
+
+    }
+
+
+
+    public void setOneCenterColor(int resId) {
+        tvOneCenter.setTextColor(getResources().getColor(resId));
     }
 
     public void setTwoCenterText(int resId) {
@@ -171,6 +179,10 @@ public class MyTemplate extends LinearLayout implements View.OnClickListener {
         tvTwoCenter.setText(str);
     }
 
+    public void setTwoCenterColor(int resId) {
+        tvTwoCenter.setTextColor(getResources().getColor(resId));
+    }
+
     public void setThreeCenterText(int resId) {
         setThreeCenterText(getResources().getString(resId));
     }
@@ -179,21 +191,37 @@ public class MyTemplate extends LinearLayout implements View.OnClickListener {
         tvThreeCenter.setText(str);
     }
 
+    public void setThreeCenterColor(int resId) {
+        tvThreeCenter.setTextColor(getResources().getColor(resId));
+    }
+
 
     public void setOneFootText(int resId) {
         setOneFootText(getResources().getString(resId));
     }
 
     public void setOneFootText(String str) {
-        tvOneFoot.setText(str);
+        tvOneFoot.setText(str+"%");
+//        tvOneFoot.setTextColor();
+
     }
+
+
+    public void setOneFootColor(int resId) {
+        tvOneFoot.setTextColor(getResources().getColor(resId));
+    }
+
 
     public void setTwoFootText(int resId) {
         setTwoFootText(getResources().getString(resId));
     }
 
     public void setTwoFootText(String str) {
-        tvTwoFoot.setText(str);
+        tvTwoFoot.setText(str+"%");
+    }
+
+    public void setTwoFootColor(int resId) {
+        tvTwoFoot.setTextColor(getResources().getColor(resId));
     }
 
     public void setThreeFootText(int resId) {
@@ -201,8 +229,13 @@ public class MyTemplate extends LinearLayout implements View.OnClickListener {
     }
 
     public void setThreeFootText(String str) {
-        tvThreeFoot.setText(str);
+        tvThreeFoot.setText(str+"%");
     }
+
+    public void setThreeFootColor(int resId) {
+        tvThreeFoot.setTextColor(getResources().getColor(resId));
+    }
+
 
     public void setOnMoreListener(TextOnClickListener ll) {
         this.ll = ll;
