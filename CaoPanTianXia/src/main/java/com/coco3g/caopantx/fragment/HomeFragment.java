@@ -247,6 +247,10 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
 //        监听事件
 //        mGuijiSection.setOnClickListener(this);
 
+
+
+
+
     }
 
 
@@ -627,15 +631,15 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
      */
     @Override
     public void onClick(View v) {
-        Intent intent;
-        switch (v.getId()) {
+//        Intent intent;
+//        switch (v.getId()) {
+//
+//            case R.id.list_item_all_guoji:
+//                intent = new Intent(getActivity(), GuoJiActivity.class);
+//                startActivity(intent);
+//                break;
 
-            case R.id.list_item_all_guoji:
-                intent = new Intent(getActivity(), GuoJiActivity.class);
-                startActivity(intent);
-                break;
-
-        }
+//        }
     }
 
 

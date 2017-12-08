@@ -105,8 +105,8 @@ public class TransacationAdapter extends BaseAdapter {
             holder.tvType = (TextView) convertView.findViewById(R.id.list_item_tv_type);
             holder.tvZuiXinJia = (TextView) convertView.findViewById(R.id.list_item_tv_zuixinjia);
             holder.tvZhangdiefu = (TextView) convertView.findViewById(R.id.list_item_tv_zhangdiefu);
-            holder.tvChiCang = (TextView) convertView.findViewById(R.id.list_item_tv_chicang);
-            holder.tvYingKui = (TextView) convertView.findViewById(R.id.list_item_tv_yingkui);
+            holder.tvChiCang = (TextView) convertView.findViewById(R.id.list_item_tv_chicang_num);
+            holder.tvYingKui = (TextView) convertView.findViewById(R.id.list_item_tv_yingkui_num);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -138,7 +138,7 @@ public class TransacationAdapter extends BaseAdapter {
             holder.tvZhangdiefu.setText(rate + "%");
         }
         // 持仓
-        holder.tvChiCang.setText("持仓：" + mList.get(position).order_nums);
+        holder.tvChiCang.setText( mList.get(position).order_nums);
         //
         if (mList.get(position).buyPrice == null && mList.get(position).salePrice == null) {
             mList.get(position).buyPrice = "0";
@@ -202,7 +202,13 @@ public class TransacationAdapter extends BaseAdapter {
             float totalP = zhangPrice + diePrice;
 //            holder.tvYingKui.setText("盈亏：" + String.format("%.2f", (float) Math.round(totalP)));
 //            holder.tvYingKui.setText("盈亏：" + String.format("%.2f", Double.parseDouble(totalP + "")));
-            holder.tvYingKui.setText("盈亏：" + String.format("%.2f", totalP));
+
+            if (totalP >= 0){
+                holder.tvYingKui.setTextColor(mContext.getResources().getColor(R.color.red));
+            }else {
+                holder.tvYingKui.setTextColor(mContext.getResources().getColor(R.color.green));
+            }
+            holder.tvYingKui.setText(String.format("%.2f", totalP));
         }
 //        holder.tvYingKui.setText("盈亏：" + String.format("%.2f", totalP));
         return convertView;

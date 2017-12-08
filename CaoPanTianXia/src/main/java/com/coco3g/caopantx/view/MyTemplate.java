@@ -25,7 +25,7 @@ public class MyTemplate extends LinearLayout implements View.OnClickListener {
             tvTwoHead, tvTwoCenter, tvTwoFoot,
             tvThreeHead, tvThreeCenter, tvThreeFoot;
 
-    private TextOnClickListener ll;
+    public TextOnClickListener ll;
 
     public MyTemplate(Context context) {
         this(context, null);
@@ -42,8 +42,8 @@ public class MyTemplate extends LinearLayout implements View.OnClickListener {
 
         initView();
 
-
         if (attrs != null) {
+
             TintTypedArray a = TintTypedArray.obtainStyledAttributes(context, attrs, R.styleable.MyTemplate, defStyleAttr, 0);
 
             String headTitel = a.getString(R.styleable.MyTemplate_headTitle);
@@ -237,7 +237,7 @@ public class MyTemplate extends LinearLayout implements View.OnClickListener {
     }
 
 
-    public void setOnMoreListener(TextOnClickListener ll) {
+    public void setOnMoreListener() {
         this.ll = ll;
     }
 
