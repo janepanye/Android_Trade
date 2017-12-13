@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.coco3g.caopantx.bean.BaseData;
 import com.coco3g.caopantx.bean.HangQingBaseDataBean;
@@ -32,6 +33,8 @@ import com.coco3g.caopantx.presenter.KViewUrlPresenter;
 import com.coco3g.caopantx.presenter.ProDetailPresenter;
 import com.coco3g.caopantx.presenter.SocketRequestPresenter;
 import com.coco3g.caopantx.utils.Coco3gBroadcastUtils;
+import com.coco3g.caopantx.view.SlideSwitch;
+import com.coco3g.caopantx.view.SlideSwitch.SlideListener;
 import com.coco3g.caopantx.view.TopBarView;
 import com.coco3g.caopantx.R;
 import com.coco3g.caopantx.view.KViewWebView;
@@ -43,14 +46,15 @@ import java.util.HashMap;
 /**
  * Created by lisen on 16/9/2.
  */
-public class K_DetailActivity extends BaseActivity implements View.OnClickListener {
+public class K_DetailActivity extends BaseActivity implements View.OnClickListener,SlideListener {
     TopBarView mTopBar;
-    RelativeLayout mRelativeXiaDan;
+    RelativeLayout mRelativeXiaDan,mRelativeQuickTrade;
     TabLayout mTabLayout;
     KViewWebView mWeb1, mWeb2, mWeb3, mWeb4;
     //    NotScrollViewPager mViewPager;
     TextView mTxtSalePrice, mTxtPerprice, mTxtZhangdie, mTxtBuynum, mTxtSalenum, mTxtShipan, mTxtShipanDs, mTxtFudong,
-            mTxtMaizhang, mTxtMaidie, mTxtYiJianQP, mTxtFenShi, mTxtRiXian, mTxtPanKou, mTxtFenZhong, mTxtJieSuan, mTxtChiCangUnRead;
+            mTxtMaizhang, mTxtMaidie, mTxtYiJianQP, mTxtFenShi, mTxtRiXian, mTxtPanKou, mTxtFenZhong, mTxtJieSuan, mTxtChiCangUnRead,
+            mTxtnums,mTxtZhiSunNum,mTxtZhiYingNum;
     TextView[] textViews;  //三个webview
     ImageView mImageUnread;
     ProgressBar mProgress1, mProgress2;
@@ -59,6 +63,8 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
     LinearLayout mLinearWeb, mLinearMaidie, mLinearMaZhang, mLinear;
     RelativeLayout mRelativeChiCangZB, mRelativeChiCang;
     CheckBox mSwitch;
+    SlideSwitch mQuickSwitch;
+
     //
     RelativeLayout.LayoutParams mLpKview;
     String[] mTitlelist;
@@ -110,6 +116,9 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
         getProDetail();
     }
 
+    /**
+     *
+     */
     private void initView() {
         mTopBar = (TopBarView) findViewById(R.id.topbar_kdetail);
         TextView tv = new TextView(this);
@@ -137,10 +146,8 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
         mWeb2 = (KViewWebView) findViewById(R.id.web_kdetail_2);
         mWeb3 = (KViewWebView) findViewById(R.id.web_kdetail_3);
         mWeb4 = (KViewWebView) findViewById(R.id.web_kdetail_4);
-//        mWeb1.setLayoutParams(mLpKview);
-//        mWeb2.setLayoutParams(mLpKview);
-//        mWeb3.setLayoutParams(mLpKview);
-//        mRelativeZhiSun = (RelativeLayout) findViewById(R.id.relative_kdetail_zhisun);
+
+
         mRelativeXiaDan = (RelativeLayout) findViewById(R.id.relative_kdetail_jisu_xiadan);
         mTxtSalePrice = (TextView) findViewById(R.id.tv_kdetail_saleprice);
         mTxtPerprice = (TextView) findViewById(R.id.tv_kdetail_perprice);
@@ -150,8 +157,9 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
         mTxtShipan = (TextView) findViewById(R.id.tv_kdetail_shipan);
         mTxtShipanDs = (TextView) findViewById(R.id.tv_kdetail_shipan_description);
         mTxtFudong = (TextView) findViewById(R.id.tv_kdetail_fudong);
-//        mTxtPing = (TextView) findViewById(R.id.tv_kdetail_ping);
-//        mTxtChicang = (TextView) findViewById(R.id.tv_kdetail_chicang);
+        mQuickSwitch = (SlideSwitch) findViewById(R.id.quickSwitch);
+
+
         mImageUnread = (ImageView) findViewById(R.id.tv_kdetail_unread);
         mTxtJieSuan = (TextView) findViewById(R.id.tv_kdetail_jiesuan);
         mTxtMaizhang = (TextView) findViewById(R.id.tv_kdetail_maizhang);
@@ -159,16 +167,18 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
         mTxtChiCangUnRead = (TextView) findViewById(R.id.tv_kdetail_chicang_unread_num);
         mProgress1 = (ProgressBar) findViewById(R.id.progress_kdetail_1);
         mProgress2 = (ProgressBar) findViewById(R.id.progress_kdetail_2);
-//        mLinearOrder = (LinearLayout) findViewById(R.id.linear_kdetail_order);
         mLinearMaidie = (LinearLayout) findViewById(R.id.linear_kdetail_maidie);
         mLinearMaZhang = (LinearLayout) findViewById(R.id.linear_kdetail_maizhang);
-//        mRelativeOrder = (RelativeLayout) findViewById(R.id.relative_kdetail_order);
+
         mRelativeChiCangZB = (RelativeLayout) findViewById(R.id.relative_kdetail_chicang_zhibo);
+
         mRelativeChiCang = (RelativeLayout) findViewById(R.id.relative_kdetail_chicang);
 //        mTxtChicangzhibo = (TextView) findViewById(R.id.tv_kdetail_chicangzhibo);
-//        mTxtnums = (TextView) findViewById(R.id.tv_kdetail_nums);
-//        mTxtZhiSunNum = (TextView) findViewById(R.id.tv_kdetail_zhisun_num);
-//        mTxtZhiYingNum = (TextView) findViewById(R.id.tv_kdetail_zhiying_num);
+        //mTxtnums mTxtZhiSunNum mTxtZhiYingNum
+        mRelativeQuickTrade = (RelativeLayout) findViewById(R.id.relative_kdetail_quick_trade);
+        mTxtnums = (TextView) findViewById(R.id.tv_kdetail_nums);
+        mTxtZhiSunNum = (TextView) findViewById(R.id.tv_kdetail_zhisun_num);
+        mTxtZhiYingNum = (TextView) findViewById(R.id.tv_kdetail_zhiying_num);
 //        mTxtZhiSun = (TextView) findViewById(R.id.tv_kdetail_zhisun);
 //        mTxtZhiYing = (TextView) findViewById(R.id.tv_kdetail_zhiying);
 //        mSwitch = (CheckBox) findViewById(R.id.switch_kdetail);
@@ -244,6 +254,30 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
 //                }
 //            }
 //        });
+
+
+//        mQuickSwitch.setSlideListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//
+//                if (Global.USERINFO == null) {
+//                    Intent intent = new Intent(K_DetailActivity.this, LoginActivity.class);
+//                    startActivity(intent);
+//                    return;
+//                }
+//                if (((SlideSwitch) view).open)) { // 如果打开了开关
+//                    String url = DataUrl.START_JISU_ORDER_URL + mID + "/prono/" + mCurrProInfo.prono + "/moni/" + mMoni;
+//                    Intent intent = new Intent(K_DetailActivity.this, WebActivity.class);
+//                    intent.putExtra("url", url);
+//                    startActivity(intent);
+//                } else { // 如果关闭了开关
+//                    closeOrderSet();
+//                }
+//
+//            }
+//        });
+
         // 接收需要刷新当前界面的广播
         mCurrBoardCast = new Coco3gBroadcastUtils(this);
         mCurrBoardCast.receiveBroadcast(Coco3gBroadcastUtils.RETURN_UPDATE_FLAG)
@@ -254,10 +288,7 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
                     }
                 });
         //
-//        mTxtChicang.setOnClickListener(this);
-//        mTxtJisuan.setOnClickListener(this);
-//        mTxtMaizhang.setOnClickListener(this);
-//        mTxtMaidie.setOnClickListener(this);
+
         mImageRefresh.setOnClickListener(this);
         mRelativeXiaDan.setOnClickListener(this);
         mLinearMaidie.setOnClickListener(this);
@@ -270,6 +301,13 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
         mTxtPanKou.setOnClickListener(this);
         mTxtFenZhong.setOnClickListener(this);
         mTxtJieSuan.setOnClickListener(this);
+
+
+
+//        mQuickSwitch.setState(false);
+
+        mQuickSwitch.setSlideListener(this);
+
         //
         mWeb2.setVisibility(View.GONE);
         mWeb3.setVisibility(View.GONE);
@@ -280,6 +318,27 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
         mViewList.add(mWeb3);
         mViewList.add(mWeb4);
     }
+
+
+
+        @Override
+        public void open() {
+            // TODO Auto-generated method stub
+
+            Toast.makeText(this,
+                    "silde open",Toast.LENGTH_LONG).show();
+
+        }
+
+        @Override
+        public void close() {
+            // TODO Auto-generated method stub
+
+            Toast.makeText(this,
+                    "silde close",Toast.LENGTH_LONG).show();
+
+        }
+
 
     @Override
     public void onClick(View v) {
@@ -753,6 +812,12 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
 //            mTxtUnLogin.setVisibility(View.VISIBLE);
 //            mTxtnums.setVisibility(View.GONE);
 //            mRelativeZhiSun.setVisibility(View.GONE);
+
+//            PYDO
+            mRelativeQuickTrade.setVisibility(View.GONE);
+
+
+
         } else {
 //            mTxtUnLogin.setVisibility(View.GONE);
             // 根据orderset.status，设置极速下单开关的状态
@@ -760,15 +825,23 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
 //                mSwitch.setChecked(true);
 //                mTxtnums.setVisibility(View.VISIBLE);
 //                mRelativeZhiSun.setVisibility(View.VISIBLE);
+//            PYDO
+                mQuickSwitch.setState(true);
+                mRelativeQuickTrade.setVisibility(View.VISIBLE);
+
             } else {
 //                mSwitch.setChecked(false);
 //                mTxtnums.setVisibility(View.GONE);
 //                mRelativeZhiSun.setVisibility(View.GONE);
+//            PYDO
+                mQuickSwitch.setState(false);
+                mRelativeQuickTrade.setVisibility(View.GONE);
             }
         }
-//        mTxtnums.setText("数量" + mCurrProInfo.orderset.nums + "手");
-//        mTxtZhiSunNum.setText(mCurrProInfo.orderset.zhisun);
-//        mTxtZhiYingNum.setText(mCurrProInfo.orderset.zhiying);
+//            PYDO
+        mTxtnums.setText(mCurrProInfo.orderset.nums);
+        mTxtZhiSunNum.setText(mCurrProInfo.orderset.zhisun);
+        mTxtZhiYingNum.setText(mCurrProInfo.orderset.zhiying);
     }
 
     /**
@@ -781,6 +854,13 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
 //                mSwitch.setChecked(false);
 //                mTxtnums.setVisibility(View.GONE);
 //                mRelativeZhiSun.setVisibility(View.GONE);
+
+
+//                PYDO
+                mQuickSwitch.setState(false);
+                mRelativeQuickTrade.setVisibility(View.GONE);
+
+
                 if (mSocketPresenter != null) {
                     mSocketPresenter.closeSocket();
                 }
@@ -793,11 +873,15 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
             @Override
             public void onFailure(BaseData data) {
 //                mSwitch.setChecked(true);
+ //                PYDO
+                mQuickSwitch.setState(true);
             }
 
             @Override
             public void onError() {
 //                mSwitch.setChecked(true);
+//                PYDO
+                mQuickSwitch.setState(true);
             }
         });
     }

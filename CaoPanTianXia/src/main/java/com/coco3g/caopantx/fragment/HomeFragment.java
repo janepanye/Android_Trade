@@ -82,6 +82,12 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     //
     ArrayList<ProGroupListDataBean> mCurrAllData = new ArrayList<>();
 
+    /**
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home, null);
@@ -364,6 +370,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         mSocketPresenter.transList("{\"command\":\"binduid\",\"uid\":\"get_hangqing\"}", new ITransListListener() {
             @Override
             public void onSuccess(TransListDataBean data) {
+//                ArrayList<TransListDataBean.TransData> list = new ArrayList<TransListDataBean.TransData>(data.data);
                 ArrayList<TransListDataBean.TransData> list = data.data;
 
 //                if (mCurrType == 15) {

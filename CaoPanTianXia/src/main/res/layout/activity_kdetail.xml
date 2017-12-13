@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:layout_width="match_parent"
+                xmlns:slideswitch="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/k_view_bg"
                 android:clipToPadding="true"
@@ -441,157 +443,409 @@
 
         </RelativeLayout>
 
-        <!--<ImageView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="1dp"-->
-        <!--android:background="@color/text_color_10" />-->
 
-        <!--一建全平-->
-        <RelativeLayout
-            android:id="@+id/linear_kdetail_yijian_quanping"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/k_grey"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp">
 
-            <!--<TextView-->
-                <!--android:id="@+id/tv_kdetail_chicang_time"-->
+
+        <!--<RelativeLayout-->
+            <!--android:id="@+id/relative_kdetail_quickTrade"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="1dp"-->
+            <!--android:background="@color/k_grey">-->
+
+            <!--<RelativeLayout-->
                 <!--android:layout_width="wrap_content"-->
                 <!--android:layout_height="wrap_content"-->
                 <!--android:layout_centerVertical="true"-->
-                <!--android:text="本时段持仓时间至02:28:00"-->
-                <!--android:textColor="@color/transparent2"-->
-                <!--android:textSize="12sp"/>-->
+                <!--android:layout_gravity="center_vertical"-->
+                <!--android:padding="10dp">-->
 
-            <TextView
-                android:id="@+id/tv_kdetail_yijian_quanping"
+
+
+                <!--<TextView-->
+                    <!--android:id="@+id/tv_quick_trade"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:singleLine="false"-->
+                    <!--android:text="@string/text_quick_trade"-->
+                    <!--android:textColor="@color/red"-->
+                    <!--android:textSize="13sp"/>-->
+
+                <!--<com.coco3g.caopantx.view.SlideSwitch-->
+                    <!--android:id="@+id/quickSwitch"-->
+                    <!--android:layout_width="70dp"-->
+                    <!--android:layout_height="35dp"-->
+                    <!--android:layout_marginLeft="10dp"-->
+                    <!--android:layout_toRightOf="@+id/tv_quick_trade"-->
+                    <!--slideswitch:isOpen="false"-->
+                    <!--slideswitch:shape="circle"-->
+                    <!--slideswitch:themeColor="@color/green">-->
+                <!--</com.coco3g.caopantx.view.SlideSwitch>-->
+
+
+            <!---->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/tv_kdetail_num"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginLeft="50dp"-->
+                    <!--android:layout_toRightOf="@+id/quickSwitch"-->
+                    <!--android:layout_centerVertical="true"-->
+                    <!--android:text="数量"-->
+                    <!--android:textColor="@drawable/selector_tablayout_text"-->
+                    <!--android:textSize="12sp"/>-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/tv_kdetail_nums"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_centerVertical="true"-->
+                    <!--android:layout_toRightOf="@+id/tv_kdetail_num"-->
+                    <!--android:layout_marginLeft="2dp"-->
+                    <!--android:text="0"-->
+                    <!--android:textColor="@color/white"-->
+                    <!--android:textSize="12sp"/>-->
+
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_centerVertical="true"-->
+                    <!--android:layout_toRightOf="@+id/tv_kdetail_nums"-->
+                    <!--android:layout_marginLeft="2dp"-->
+                    <!--android:text="手"-->
+                    <!--android:textColor="@drawable/selector_tablayout_text"-->
+                    <!--android:textSize="12sp"/>-->
+
+                <!--&lt;!&ndash;//tv_kdetail_zhisun_num&ndash;&gt;-->
+                <!--<TextView-->
+                    <!--android:id="@+id/tv_kdetail_zhisun_num"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_alignParentRight="true"-->
+                    <!--android:layout_marginRight="10dp"-->
+                    <!--android:text="0.00"-->
+                    <!--android:textColor="@color/white"-->
+                    <!--android:textSize="12sp" />-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/tv_kdetail_zhiying_num"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_alignLeft="@+id/tv_kdetail_zhisun_num"-->
+                    <!--android:layout_alignStart="@+id/tv_kdetail_zhisun_num"-->
+                    <!--android:layout_below="@+id/tv_kdetail_zhisun_num"-->
+                    <!--android:text="0.00"-->
+                    <!--android:textColor="@color/white"-->
+                    <!--android:textSize="12sp" />-->
+
+
+
+
+
+                <!--<TextView-->
+                    <!--android:id="@+id/tv_kdetail_zhisun"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginRight="5dp"-->
+                    <!--android:layout_toLeftOf="@+id/tv_kdetail_zhiying_num"-->
+                    <!--android:text="止损"-->
+                    <!--android:textColor="@drawable/selector_tablayout_text"-->
+                    <!--android:textSize="12sp" />-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/tv_kdetail_zhiying"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_alignLeft="@+id/tv_kdetail_zhisun"-->
+                    <!--android:layout_alignStart="@+id/tv_kdetail_zhisun"-->
+                    <!--android:layout_below="@+id/tv_kdetail_zhisun"-->
+                    <!--android:text="止盈 "-->
+                    <!--android:textColor="@drawable/selector_tablayout_text"-->
+                    <!--android:textSize="12sp" />-->
+
+            <!--</RelativeLayout>-->
+
+        <!--</RelativeLayout>-->
+
+
+
+
+        <RelativeLayout
+            android:id="@+id/relative_kdetail_quickTrade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="@color/k_grey">
+
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/shape_red_txt_bg"
-                android:paddingBottom="5dp"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:paddingTop="5dp"
-                android:text="一键全平"
-                android:textColor="@color/white"
-                android:textSize="12sp"/>
+                android:layout_gravity="center_vertical"
+                android:padding="10dp">
 
-            <!--<ToggleButton-->
-                <!--android:id="@+id/toggleButton2"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_alignParentLeft="true"-->
-                <!--android:layout_alignParentStart="true"-->
-                <!--android:layout_alignParentTop="true"-->
-                <!--android:text="ToggleButton" />-->
+
+
+                <TextView
+                    android:id="@+id/tv_quick_trade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:singleLine="false"
+                    android:text="@string/text_quick_trade"
+                    android:textColor="@color/red"
+                    android:textSize="13sp"/>
+
+                <com.coco3g.caopantx.view.SlideSwitch
+                    android:id="@+id/quickSwitch"
+                    android:layout_width="70dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/tv_quick_trade"
+                    slideswitch:isOpen="false"
+                    slideswitch:shape="circle"
+                    slideswitch:themeColor="@color/green">
+                </com.coco3g.caopantx.view.SlideSwitch>
+
+
+                    <RelativeLayout
+                        android:id="@+id/relative_kdetail_quick_trade"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/quickSwitch"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:background="@color/k_grey">
+
+                        <!--<TextView-->
+                            <!--android:id="@+id/tv_kdetail_num"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_centerVertical="true"-->
+                            <!--android:text="数量"-->
+                            <!--android:textColor="@drawable/selector_tablayout_text"-->
+                            <!--android:textSize="12sp" />-->
+
+                        <!--<TextView-->
+                            <!--android:id="@+id/tv_kdetail_nums"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_centerVertical="true"-->
+                            <!--android:layout_marginLeft="2dp"-->
+                            <!--android:layout_toRightOf="@+id/tv_kdetail_num"-->
+                            <!--android:text="0"-->
+                            <!--android:textColor="@color/white"-->
+                            <!--android:textSize="12sp" />-->
+
+                        <!--<TextView-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_centerVertical="true"-->
+                            <!--android:layout_marginLeft="2dp"-->
+                            <!--android:layout_toRightOf="@+id/tv_kdetail_nums"-->
+                            <!--android:text="手"-->
+                            <!--android:textColor="@drawable/selector_tablayout_text"-->
+                            <!--android:textSize="12sp" />-->
+
+
+
+
+
+                        <!--//tv_kdetail_zhisun_num-->
+                        <TextView
+                            android:id="@+id/tv_kdetail_zhisun_num"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="10dp"
+                            android:text="0.00"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/tv_kdetail_zhiying_num"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignLeft="@+id/tv_kdetail_zhisun_num"
+                            android:layout_alignStart="@+id/tv_kdetail_zhisun_num"
+                            android:layout_below="@+id/tv_kdetail_zhisun_num"
+                            android:text="0.00"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
+
+
+                        <TextView
+                            android:id="@+id/tv_kdetail_zhisun"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="5dp"
+                            android:layout_toLeftOf="@+id/tv_kdetail_zhiying_num"
+                            android:text="止损"
+                            android:textColor="@drawable/selector_tablayout_text"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/tv_kdetail_zhiying"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignLeft="@+id/tv_kdetail_zhisun"
+                            android:layout_alignStart="@+id/tv_kdetail_zhisun"
+                            android:layout_below="@+id/tv_kdetail_zhisun"
+                            android:text="止盈 "
+                            android:textColor="@drawable/selector_tablayout_text"
+                            android:textSize="12sp" />
+
+
+                        <TextView
+                            android:id="@+id/tv_kdetail_shou"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="20dp"
+                            android:layout_toLeftOf="@+id/tv_kdetail_zhisun"
+                            android:text="手"
+                            android:textColor="@drawable/selector_tablayout_text"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/tv_kdetail_nums"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="5dp"
+                            android:layout_toLeftOf="@+id/tv_kdetail_shou"
+                            android:text="0"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/tv_kdetail_num"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:text="数量"
+                            android:layout_marginRight="5dp"
+                            android:layout_toLeftOf="@+id/tv_kdetail_nums"
+                            android:textColor="@drawable/selector_tablayout_text"
+                            android:textSize="12sp" />
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
 
 
         </RelativeLayout>
 
+
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/text_color_11"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="0.5dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:weightSum="4">
+
+        <RelativeLayout
+            android:id="@+id/relative_kdetail_chicang_zhibo"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:id="@+id/tv_kdetail_chicang_zhibo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:background="@color/black_1"
+                android:drawablePadding="5dp"
+                android:gravity="center"
+                android:text="持仓直播"
+                android:textColor="@color/transparent2"
+                android:textSize="16sp"/>
+
+            <ImageView
+                android:id="@+id/tv_kdetail_unread"
+                android:layout_width="4dp"
+                android:layout_height="4dp"
+                android:layout_marginTop="13dp"
+                android:layout_toRightOf="@+id/tv_kdetail_chicang_zhibo"
+                android:gravity="center"
+                android:src="@drawable/unread_bg"
+                android:visibility="visible"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/tv_kdetail_chicang_zhibo"
+                android:layout_toRightOf="@+id/tv_kdetail_unread"
+                android:paddingTop="3dp"
+                android:src="@mipmap/pic_kdetail_chicangzhibo_icon"/>
+        </RelativeLayout>
+
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
             android:background="@color/text_color_11"/>
 
+        <RelativeLayout
+            android:id="@+id/relative_kdetail_chicang"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="0.5dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:weightSum="3">
-
-            <RelativeLayout
-                android:id="@+id/relative_kdetail_chicang_zhibo"
-                android:layout_width="0dp"
+            <TextView
+                android:id="@+id/tv_kdetail_chicang"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center_horizontal">
+                android:background="@color/black_1"
+                android:gravity="center_vertical"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:text="持仓"
+                android:textColor="@color/white"
+                android:textSize="16sp"/>
 
-                <TextView
-                    android:id="@+id/tv_kdetail_chicang_zhibo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:background="@color/black_1"
-                    android:drawablePadding="5dp"
-                    android:gravity="center"
-                    android:text="持仓直播"
-                    android:textColor="@color/transparent2"
-                    android:textSize="16sp"/>
+            <TextView
+                android:id="@+id/tv_kdetail_chicang_unread_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_toRightOf="@id/tv_kdetail_chicang"
+                android:background="@drawable/circle_red_bg"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="@color/white"
+                android:textSize="10sp"
+                android:visibility="gone"/>
 
-                <ImageView
-                    android:id="@+id/tv_kdetail_unread"
-                    android:layout_width="4dp"
-                    android:layout_height="4dp"
-                    android:layout_marginTop="13dp"
-                    android:layout_toRightOf="@+id/tv_kdetail_chicang_zhibo"
-                    android:gravity="center"
-                    android:src="@drawable/unread_bg"
-                    android:visibility="visible"/>
+        </RelativeLayout>
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignTop="@+id/tv_kdetail_chicang_zhibo"
-                    android:layout_toRightOf="@+id/tv_kdetail_unread"
-                    android:paddingTop="3dp"
-                    android:src="@mipmap/pic_kdetail_chicangzhibo_icon"/>
-            </RelativeLayout>
-            <ImageView
-                android:layout_width="1dp"
-                android:layout_height="match_parent"
-                android:background="@color/text_color_11"/>
+        <ImageView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/text_color_11"/>
 
-            <RelativeLayout
-                android:id="@+id/relative_kdetail_chicang"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center_horizontal">
-
-                <TextView
-                    android:id="@+id/tv_kdetail_chicang"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:background="@color/black_1"
-                    android:gravity="center_vertical"
-                    android:paddingBottom="5dp"
-                    android:paddingTop="5dp"
-                    android:text="持仓"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"/>
-
-                <TextView
-                    android:id="@+id/tv_kdetail_chicang_unread_num"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:layout_toRightOf="@id/tv_kdetail_chicang"
-                    android:background="@drawable/circle_red_bg"
-                    android:gravity="center"
-                    android:text="1"
-                    android:textColor="@color/white"
-                    android:textSize="10sp"
-                    android:visibility="gone"/>
-
-            </RelativeLayout>
-
-            <ImageView
-                android:layout_width="1dp"
-                android:layout_height="match_parent"
-                android:background="@color/text_color_11"/>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal">
 
             <TextView
                 android:id="@+id/tv_kdetail_jiesuan"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@color/black_1"
@@ -600,6 +854,62 @@
                 android:text="结算"
                 android:textColor="@color/white"
                 android:textSize="16sp"/>
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/text_color_11"/>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/color_login_register_text"
+            android:gravity="center_horizontal">
+
+            <!--<TextView-->
+                    <!--android:id="@+id/tv_kdetail_yijian_quanping"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:background="@color/color_login_register_text"-->
+                    <!--android:text="一键全平"-->
+                    <!--android:textColor="@color/white"-->
+                    <!--android:textSize="16sp" />-->
+
+                <TextView
+                    android:id="@+id/tv_kdetail_yijian_quanping"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:drawablePadding="5dp"
+                    android:gravity="center"
+                    android:text="一键全平"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"/>
+            </RelativeLayout>
+
+
+            <!--<ImageView-->
+                <!--android:layout_width="1dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:background="@color/text_color_11"/>-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/tv_kdetail_yijian_quanping"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+
+                <!--android:background="@color/color_login_register_text"-->
+                <!--android:paddingBottom="5dp"-->
+                <!--android:paddingLeft="5dp"-->
+                <!--android:paddingRight="5dp"-->
+                <!--android:paddingTop="5dp"-->
+                <!--android:text="一键全平"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:textSize="16sp"/>-->
+
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

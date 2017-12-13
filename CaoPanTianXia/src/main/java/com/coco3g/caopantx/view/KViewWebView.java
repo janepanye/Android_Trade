@@ -36,6 +36,7 @@ public class KViewWebView extends RelativeLayout {
     public KViewWebView(Context context) {
         super(context);
         mContext = context;
+        initView();
     }
 
     public KViewWebView(Context context, AttributeSet attrs) {
@@ -48,11 +49,15 @@ public class KViewWebView extends RelativeLayout {
     public KViewWebView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         mContext = context;
+        initView();
     }
 
+
+//    PYTODO
+//    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     private void initView() {
-        LayoutInflater lay = LayoutInflater.from(mContext);
-        mView = lay.inflate(R.layout.view_kview_webview, this);
+        LayoutInflater lay = LayoutInflater.from(getContext());
+        mView = lay.inflate(R.layout.view_kview_webview, this,true);
         mScrollView = (WebView) mView.findViewById(R.id.view_kview_webview);
         mXRefreshView = (XRefreshView) mView.findViewById(R.id.xrefresh_kview);
         //可以下拉刷新
@@ -91,7 +96,7 @@ public class KViewWebView extends RelativeLayout {
         mScrollView.getSettings().setDomStorageEnabled(true);
         // 开启database storage API功能
         mScrollView.getSettings().setDatabaseEnabled(true);
-        String cacheDirPath = mContext.getFilesDir().getAbsolutePath() + "webview";
+        String cacheDirPath = getContext().getFilesDir().getAbsolutePath() + "webview";
         // 设置数据库缓存路径
         mScrollView.getSettings().setDatabasePath(cacheDirPath); // API 19 deprecated
         // 开启Application Cache功能

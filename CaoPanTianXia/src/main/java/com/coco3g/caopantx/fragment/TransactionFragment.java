@@ -192,6 +192,8 @@ public class TransactionFragment extends BaseFragment {
         mSocketPresenter.transList("{\"command\":\"binduid\",\"uid\":\"get_hangqing\"}", new ITransListListener() {
             @Override
             public void onSuccess(TransListDataBean data) {
+//                ArrayList<TransListDataBean.TransData> list = new ArrayList<TransListDataBean.TransData>(data.data);
+
                 ArrayList<TransListDataBean.TransData> list = data.data;
                 if (mCurrType == 15) {
                     if (mGuoJiAdapter != null && mGuoJiAdapter.getList() != null && mGuoJiAdapter.getList().size() > 0) {
