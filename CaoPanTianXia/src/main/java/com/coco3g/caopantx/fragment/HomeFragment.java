@@ -206,12 +206,6 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                         startActivity(intent);
                         break;
 
-
-                    case 6:
-                        intent = new Intent(getActivity(), GuoJiActivity.class);
-                        startActivity(intent);
-                        break;
-
                 }
             }
         });
@@ -252,6 +246,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
 //        监听事件
 //        mGuijiSection.setOnClickListener(this);
+
 
 
 
@@ -648,6 +643,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
 //        }
     }
+
 
 
 }

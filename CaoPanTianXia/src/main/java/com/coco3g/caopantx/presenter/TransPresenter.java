@@ -3,6 +3,7 @@ package com.coco3g.caopantx.presenter;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 
 import com.coco3g.caopantx.mode.ITransModel;
 import com.coco3g.caopantx.net.utls.DownLoadDataThread;

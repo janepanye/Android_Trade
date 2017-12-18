@@ -37,6 +37,7 @@ public class SlideSwitch extends View {
     private static final int DEFAULT_COLOR_THEME = Color.parseColor("#ff00ee00");
     // 3 attributes
     private int color_theme;
+
     private boolean isOpen;
     private int shape;
     // varials of drawing
@@ -259,8 +260,10 @@ public class SlideSwitch extends View {
         invalidateView();
         if (listener != null)
             if (isOpen == true) {
+            //  PYDO 添加
+//              listener.open();
             } else {
-                listener.close();
+//                listener.close();
             }
     }
 

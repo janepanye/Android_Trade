@@ -58,12 +58,12 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
     TextView[] textViews;  //三个webview
     ImageView mImageUnread;
     ProgressBar mProgress1, mProgress2;
-    //    KViewWebView mWebView1, mWebView2, mWebView3;
-//    MyViewPageAdapter mAdapter;
+
     LinearLayout mLinearWeb, mLinearMaidie, mLinearMaZhang, mLinear;
     RelativeLayout mRelativeChiCangZB, mRelativeChiCang;
     CheckBox mSwitch;
     SlideSwitch mQuickSwitch;
+
 
     //
     RelativeLayout.LayoutParams mLpKview;
@@ -87,8 +87,6 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
         mMoni = getIntent().getStringExtra("moni");
         mTitlelist = new String[]{"分时", "日线", "盘口", "5分线"};
 
-//        mLpKview = new RelativeLayout.LayoutParams(Global.screenWidth, Global.screenHeight / 2 + 30);
-//        mLpKview.topMargin = Global.dipTopx(this, 10f);
         initView();
     }
 
@@ -256,27 +254,6 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
 //        });
 
 
-//        mQuickSwitch.setSlideListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//
-//                if (Global.USERINFO == null) {
-//                    Intent intent = new Intent(K_DetailActivity.this, LoginActivity.class);
-//                    startActivity(intent);
-//                    return;
-//                }
-//                if (((SlideSwitch) view).open)) { // 如果打开了开关
-//                    String url = DataUrl.START_JISU_ORDER_URL + mID + "/prono/" + mCurrProInfo.prono + "/moni/" + mMoni;
-//                    Intent intent = new Intent(K_DetailActivity.this, WebActivity.class);
-//                    intent.putExtra("url", url);
-//                    startActivity(intent);
-//                } else { // 如果关闭了开关
-//                    closeOrderSet();
-//                }
-//
-//            }
-//        });
 
         // 接收需要刷新当前界面的广播
         mCurrBoardCast = new Coco3gBroadcastUtils(this);
@@ -303,7 +280,6 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
         mTxtJieSuan.setOnClickListener(this);
 
 
-
 //        mQuickSwitch.setState(false);
 
         mQuickSwitch.setSlideListener(this);
@@ -322,11 +298,26 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
 
 
         @Override
+        // PYDO
         public void open() {
             // TODO Auto-generated method stub
 
-            Toast.makeText(this,
-                    "silde open",Toast.LENGTH_LONG).show();
+//            Toast.makeText(this,
+//                    "silde open",Toast.LENGTH_SHORT).show();
+
+            if (Global.USERINFO == null) {
+                    Intent intent = new Intent(K_DetailActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                    return;
+                }
+
+                    String url = DataUrl.START_JISU_ORDER_URL + mID + "/prono/" + mCurrProInfo.prono + "/moni/" + mMoni;
+                    Intent intent = new Intent(K_DetailActivity.this, WebActivity.class);
+                    intent.putExtra("url", url);
+                    startActivity(intent);
+
+
+            mRelativeQuickTrade.setVisibility(View.VISIBLE);
 
         }
 
@@ -334,8 +325,13 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
         public void close() {
             // TODO Auto-generated method stub
 
-            Toast.makeText(this,
-                    "silde close",Toast.LENGTH_LONG).show();
+//            Toast.makeText(this,
+//                    "silde close",Toast.LENGTH_SHORT).show();
+
+//            mQuickSwitch.setSlideable(false);
+
+            mRelativeQuickTrade.setVisibility(View.GONE);
+            closeOrderSet();
 
         }
 
@@ -435,11 +431,30 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
                 if (alreadyLogin()) {
                     if ("1".equals(mCurrProInfo.orderset.status)) {
                         closeOrderSet();
+
                     } else {
                         String url = DataUrl.START_JISU_ORDER_URL + mID + "/prono/" + mCurrProInfo.prono + "/moni/" + mMoni;
                         Intent intent3 = new Intent(K_DetailActivity.this, WebActivity.class);
                         intent3.putExtra("url", url);
                         startActivity(intent3);
+
+                    }
+                } else {
+
+                }
+                break;
+            // PYDO
+            case R.id.quickSwitch:
+                if (alreadyLogin()) {
+                    if ("1".equals(mCurrProInfo.orderset.status)) {
+                        closeOrderSet();
+
+                    } else {
+                        String url = DataUrl.START_JISU_ORDER_URL + mID + "/prono/" + mCurrProInfo.prono + "/moni/" + mMoni;
+                        Intent intent3 = new Intent(K_DetailActivity.this, WebActivity.class);
+                        intent3.putExtra("url", url);
+                        startActivity(intent3);
+
                     }
                 } else {
 
@@ -501,8 +516,10 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
             @Override
             public void onSuccess(ProDetailDataBean data) {
                 mCurrProInfo = data.response;
+
                 if (mCurrProInfo != null) {
                     fillData();
+
                     // 获取行情实时数据
                     mSocketPresenter = new SocketRequestPresenter(K_DetailActivity.this);
                     getHangQingSocketData();
@@ -566,7 +583,8 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
                 new ISocketOrderListener() {
                     @Override
                     public void onSuccess(OrderDataBean data) {
-//                        try {
+//                        PYDO 添加try catch 判断
+                        try {
                             OrderDataBean.OrderData orderdata = data.data;
                             Message message = new Message();
                             message.obj = orderdata;
@@ -576,9 +594,9 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
                             mCurrProInfo.zhang = data.data.zhang;
                             mCurrProInfo.die = data.data.die;
 
-//                        } catch (Exception e) {
-//                            e.printStackTrace();
-//                        }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     }
 
                     @Override
@@ -814,6 +832,7 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
 //            mRelativeZhiSun.setVisibility(View.GONE);
 
 //            PYDO
+//            mQuickSwitch.setState(false);
             mRelativeQuickTrade.setVisibility(View.GONE);
 
 
@@ -827,6 +846,7 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
 //                mRelativeZhiSun.setVisibility(View.VISIBLE);
 //            PYDO
                 mQuickSwitch.setState(true);
+
                 mRelativeQuickTrade.setVisibility(View.VISIBLE);
 
             } else {
@@ -835,6 +855,7 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
 //                mRelativeZhiSun.setVisibility(View.GONE);
 //            PYDO
                 mQuickSwitch.setState(false);
+
                 mRelativeQuickTrade.setVisibility(View.GONE);
             }
         }
@@ -857,7 +878,9 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
 
 
 //                PYDO
-                mQuickSwitch.setState(false);
+//                mQuickSwitch.setState(false);
+
+
                 mRelativeQuickTrade.setVisibility(View.GONE);
 
 
@@ -874,15 +897,18 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
             public void onFailure(BaseData data) {
 //                mSwitch.setChecked(true);
  //                PYDO
-                mQuickSwitch.setState(true);
+//                mQuickSwitch.setSlideable(true);
+
             }
 
             @Override
             public void onError() {
 //                mSwitch.setChecked(true);
 //                PYDO
-                mQuickSwitch.setState(true);
+//                mQuickSwitch.setSlideable(true);
+
             }
+
         });
     }
 
@@ -957,7 +983,7 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
+
         if (mSocketPresenter != null) {
             mSocketPresenter.closeSocket();
         }
@@ -971,5 +997,7 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
         mWeb2.clearMemory();
         mWeb3.clearMemory();
         mWeb4.clearMemory();
+
+        super.onDestroy();
     }
 }

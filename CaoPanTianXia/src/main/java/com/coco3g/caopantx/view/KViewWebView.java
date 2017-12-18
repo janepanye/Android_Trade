@@ -158,10 +158,24 @@ public class KViewWebView extends RelativeLayout {
         mScrollView.loadUrl(mUrl);
     }
 
+//    public void clearMemory() {
+//        mScrollView.removeAllViews();
+//        mScrollView.destroy();
+//    }
+
+
     public void clearMemory() {
-        mScrollView.removeAllViews();
-        mScrollView.destroy();
+        if(mScrollView != null) {
+            this.removeView(mScrollView);
+            mScrollView.stopLoading();
+            mScrollView.getSettings().setJavaScriptEnabled(false);
+            mScrollView.clearHistory();
+            mScrollView.clearView();
+            mScrollView.removeAllViews();
+            mScrollView.destroy();
+        }
     }
+
 
 //    class JavaScriptInterface {
 //        public void getContentWidth(String value) {
