@@ -171,8 +171,8 @@ public class SlideSwitch extends View {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         //        PYDO
-//        if (slideable == false)
-//            return super.onTouchEvent(event);
+        if (slideable == false)
+            return super.onTouchEvent(event);
         int action = MotionEventCompat.getActionMasked(event);
         switch (action) {
             case MotionEvent.ACTION_DOWN:
