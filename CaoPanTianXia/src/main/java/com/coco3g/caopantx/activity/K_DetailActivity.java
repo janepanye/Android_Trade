@@ -1,21 +1,26 @@
 package com.coco3g.caopantx.activity;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.design.widget.TabLayout;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow.OnDismissListener;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.AdapterView.OnItemClickListener;
+
 
 import com.coco3g.caopantx.bean.BaseData;
 import com.coco3g.caopantx.bean.HangQingBaseDataBean;
@@ -35,6 +40,7 @@ import com.coco3g.caopantx.presenter.SocketRequestPresenter;
 import com.coco3g.caopantx.utils.Coco3gBroadcastUtils;
 import com.coco3g.caopantx.view.SlideSwitch;
 import com.coco3g.caopantx.view.SlideSwitch.SlideListener;
+import com.coco3g.caopantx.view.SpinerPopWindow;
 import com.coco3g.caopantx.view.TopBarView;
 import com.coco3g.caopantx.R;
 import com.coco3g.caopantx.view.KViewWebView;
@@ -42,11 +48,12 @@ import com.coco3g.caopantx.view.KViewWebView;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by lisen on 16/9/2.
  */
-public class K_DetailActivity extends BaseActivity implements View.OnClickListener,SlideListener {
+public class K_DetailActivity extends BaseActivity implements View.OnClickListener,SlideListener{
     TopBarView mTopBar;
     RelativeLayout mRelativeXiaDan,mRelativeQuickTrade;
     TabLayout mTabLayout;
@@ -63,6 +70,11 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
     RelativeLayout mRelativeChiCangZB, mRelativeChiCang;
     CheckBox mSwitch;
     SlideSwitch mQuickSwitch;
+
+    private SpinerPopWindow<String> mSpinerPopWindow;
+    private List<String> minutelist;
+    private TextView tvValue;
+
 
 
     //
@@ -85,7 +97,7 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
         mID = getIntent().getStringExtra("id");
         mDevice = getIntent().getStringExtra("device");
         mMoni = getIntent().getStringExtra("moni");
-        mTitlelist = new String[]{"分时", "日线", "盘口", "5分线"};
+        mTitlelist = new String[]{"分时", "日线", "盘口", "5分线","15分线"};
 
         initView();
     }
@@ -127,6 +139,14 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
         tv.setPadding(padding, padding, padding, padding);
         tv.setText("规则说明");
         mTopBar.setRightView(tv);
+
+
+        initData();
+        tvValue = (TextView) findViewById(R.id.tv_kdetail_min5);
+        tvValue.setOnClickListener(clickListener);
+        mSpinerPopWindow = new SpinerPopWindow<String>(this, minutelist,itemClickListener);
+        mSpinerPopWindow.setOnDismissListener(dismissListener);
+
 
         mTopBar.setOnClickRightListener(new TopBarView.OnClickRightView() {
             @Override
@@ -171,8 +191,7 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
         mRelativeChiCangZB = (RelativeLayout) findViewById(R.id.relative_kdetail_chicang_zhibo);
 
         mRelativeChiCang = (RelativeLayout) findViewById(R.id.relative_kdetail_chicang);
-//        mTxtChicangzhibo = (TextView) findViewById(R.id.tv_kdetail_chicangzhibo);
-        //mTxtnums mTxtZhiSunNum mTxtZhiYingNum
+
         mRelativeQuickTrade = (RelativeLayout) findViewById(R.id.relative_kdetail_quick_trade);
         mTxtnums = (TextView) findViewById(R.id.tv_kdetail_nums);
         mTxtZhiSunNum = (TextView) findViewById(R.id.tv_kdetail_zhisun_num);
@@ -186,9 +205,9 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
         mTxtFenShi = (TextView) findViewById(R.id.tv_kdetail_fenshi);
         mTxtRiXian = (TextView) findViewById(R.id.tv_kdetail_rixian);
         mTxtPanKou = (TextView) findViewById(R.id.tv_kdetail_pankou);
-        mTxtFenZhong = (TextView) findViewById(R.id.tv_kdetail_min5);
+//        mTxtFenZhong = (TextView) findViewById(R.id.tv_kdetail_min5);
         //
-        textViews = new TextView[]{mTxtFenShi, mTxtRiXian, mTxtPanKou, mTxtFenZhong};
+        textViews = new TextView[]{mTxtFenShi, mTxtRiXian, mTxtPanKou, tvValue};
         textViews[0].setSelected(true);
         for (int i = 0; i < mTitlelist.length; i++) {
             mTabLayout.addTab(mTabLayout.newTab().setText(mTitlelist[i]));
@@ -276,7 +295,7 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
         mTxtFenShi.setOnClickListener(this);
         mTxtRiXian.setOnClickListener(this);
         mTxtPanKou.setOnClickListener(this);
-        mTxtFenZhong.setOnClickListener(this);
+//        mTxtFenZhong.setOnClickListener(this);
         mTxtJieSuan.setOnClickListener(this);
 
 
@@ -295,9 +314,67 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
         mViewList.add(mWeb4);
     }
 
-
-
+    /**
+     * 监听popupwindow取消
+     */
+    private OnDismissListener dismissListener=new OnDismissListener() {
         @Override
+        public void onDismiss() {
+            setTextImage(R.mipmap.icon_down);
+        }
+    };
+
+    /**
+     * popupwindow显示的ListView的item点击事件
+     */
+    private OnItemClickListener itemClickListener = new OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            mSpinerPopWindow.dismiss();
+            tvValue.setText(minutelist.get(position));
+
+            Toast.makeText(K_DetailActivity.this, "点击了:" + minutelist.get(position),Toast.LENGTH_LONG).show();
+        }
+    };
+
+    /**
+     * 显示PopupWindow
+     */
+    private OnClickListener clickListener = new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.tv_kdetail_min5:
+                    mSpinerPopWindow.setWidth(tvValue.getWidth());
+                    mSpinerPopWindow.showAsDropDown(tvValue);
+                    setTextImage(R.mipmap.icon_up);
+                    break;
+            }
+        }
+    };
+
+    /**
+     * 初始化数据
+     */
+    private void initData() {
+        minutelist = new ArrayList<String>();
+        for (int i = 3; i < mTitlelist.length; i++) {
+            minutelist.add(mTitlelist[i]);
+        }
+    }
+
+    /**
+     * 给TextView右边设置图片
+     * @param resId
+     */
+    private void setTextImage(int resId) {
+        Drawable drawable = getResources().getDrawable(resId);
+        drawable.setBounds(0, 0, drawable.getMinimumWidth(),drawable.getMinimumHeight());// 必须设置图片大小，否则不显示
+        tvValue.setCompoundDrawables(null, null, drawable, null);
+    }
+
+
+    @Override
         // PYDO
         public void open() {
             // TODO Auto-generated method stub
@@ -350,9 +427,9 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
             case R.id.tv_kdetail_pankou:  //盘口
                 setWebviewVisible(2);
                 break;
-            case R.id.tv_kdetail_min5:  //5分线
-                setWebviewVisible(3);
-                break;
+//            case R.id.tv_kdetail_min5:  //5分线
+//                setWebviewVisible(3);
+//                break;
             case R.id.tv_kdetail_yijian_quanping: // 一键全平
                 if (alreadyLogin()) {
                     pingCangAll();
@@ -763,12 +840,14 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
                     mVUrlList.add(data.response.kline);
                     mVUrlList.add(data.response.pankou);
                     mVUrlList.add(data.response.minute_kline5);
+                    mVUrlList.add(data.response.minute_kline15);
                     //
                     mWeb1.loadUrl(mVUrlList.get(0));
                     mCurrLoadMap.put(0, true);
                     mCurrLoadMap.put(1, false);
                     mCurrLoadMap.put(2, false);
                     mCurrLoadMap.put(3, false);
+                    mCurrLoadMap.put(4, false);
                 }
 
             }
@@ -875,10 +954,6 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
 //                mSwitch.setChecked(false);
 //                mTxtnums.setVisibility(View.GONE);
 //                mRelativeZhiSun.setVisibility(View.GONE);
-
-
-//                PYDO
-//                mQuickSwitch.setState(false);
 
 
                 mRelativeQuickTrade.setVisibility(View.GONE);

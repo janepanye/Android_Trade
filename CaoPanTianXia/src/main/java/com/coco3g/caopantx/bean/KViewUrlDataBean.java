@@ -17,6 +17,10 @@ public class KViewUrlDataBean extends BaseData {
 
         public String pankou;
 
+        public String minute_kline5;
+
+        public String minute_kline15;
+
         public String zhibo;
 
         public String chicang;
@@ -27,7 +31,7 @@ public class KViewUrlDataBean extends BaseData {
 
         public String buydie;
 
-        public String minute_kline5;
+
 
     }
 

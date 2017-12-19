@@ -78,6 +78,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight=".5"/>
+
             <TextView
                 android:id="@+id/tv_kdetail_pankou"
                 android:layout_width="wrap_content"
@@ -90,10 +91,12 @@
                 android:textSize="14sp"
                 android:layout_weight="1"
                 android:gravity="center"/>
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight=".5"/>
+
             <TextView
                 android:id="@+id/tv_kdetail_min5"
                 android:layout_width="wrap_content"
@@ -101,12 +104,19 @@
                 android:background="@drawable/selector_tablayout_bg"
                 android:paddingBottom="2dp"
                 android:paddingTop="2dp"
+                android:paddingRight="2dp"
                 android:text="5分线"
                 android:textColor="@drawable/selector_tablayout_text"
                 android:textSize="14sp"
                 android:layout_weight="1"
+                android:drawableRight="@mipmap/icon_down"
                 android:gravity="center"/>
+
+
+
         </LinearLayout>
+
+
 
         <RelativeLayout
             android:layout_width="match_parent"

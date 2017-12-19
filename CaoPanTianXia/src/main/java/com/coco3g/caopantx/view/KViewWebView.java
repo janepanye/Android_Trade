@@ -158,10 +158,7 @@ public class KViewWebView extends RelativeLayout {
         mScrollView.loadUrl(mUrl);
     }
 
-//    public void clearMemory() {
-//        mScrollView.removeAllViews();
-//        mScrollView.destroy();
-//    }
+
 
 
     public void clearMemory() {
@@ -170,7 +167,6 @@ public class KViewWebView extends RelativeLayout {
             mScrollView.stopLoading();
             mScrollView.getSettings().setJavaScriptEnabled(false);
             mScrollView.clearHistory();
-            mScrollView.clearView();
             mScrollView.removeAllViews();
             mScrollView.destroy();
         }

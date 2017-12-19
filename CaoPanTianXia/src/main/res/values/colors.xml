@@ -47,4 +47,10 @@
     <color name="color_me_reigster">#a40000</color>
     <!--注册-->
     <color name="register_agreement_color">#4776ef</color>
+
+    <!--下拉框-->
+    <color name="white_normal">#ffffffff</color>
+    <color name="login_button_background">#71c297</color>
+    <color name="content_color">#666666</color>
+
 </resources>
