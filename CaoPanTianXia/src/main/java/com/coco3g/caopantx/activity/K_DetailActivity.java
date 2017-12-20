@@ -57,7 +57,7 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
     TopBarView mTopBar;
     RelativeLayout mRelativeXiaDan,mRelativeQuickTrade;
     TabLayout mTabLayout;
-    KViewWebView mWeb1, mWeb2, mWeb3, mWeb4;
+    KViewWebView mWeb1, mWeb2, mWeb3, mWeb4, mWeb5;
     //    NotScrollViewPager mViewPager;
     TextView mTxtSalePrice, mTxtPerprice, mTxtZhangdie, mTxtBuynum, mTxtSalenum, mTxtShipan, mTxtShipanDs, mTxtFudong,
             mTxtMaizhang, mTxtMaidie, mTxtYiJianQP, mTxtFenShi, mTxtRiXian, mTxtPanKou, mTxtFenZhong, mTxtJieSuan, mTxtChiCangUnRead,
@@ -73,7 +73,7 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
 
     private SpinerPopWindow<String> mSpinerPopWindow;
     private List<String> minutelist;
-    private TextView tvValue;
+
 
 
 
@@ -112,6 +112,8 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
         mWeb2.setLayoutParams(mLpKview);
         mWeb3.setLayoutParams(mLpKview);
         mWeb4.setLayoutParams(mLpKview);
+//        PYTODO
+        mWeb5.setLayoutParams(mLpKview);
     }
 
     @Override
@@ -127,7 +129,7 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
     }
 
     /**
-     *
+     *  初始化UI
      */
     private void initView() {
         mTopBar = (TopBarView) findViewById(R.id.topbar_kdetail);
@@ -142,8 +144,9 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
 
 
         initData();
-        tvValue = (TextView) findViewById(R.id.tv_kdetail_min5);
-        tvValue.setOnClickListener(clickListener);
+
+        mTxtFenZhong = (TextView) findViewById(R.id.tv_kdetail_min);
+        mTxtFenZhong.setOnClickListener(clickListener);
         mSpinerPopWindow = new SpinerPopWindow<String>(this, minutelist,itemClickListener);
         mSpinerPopWindow.setOnDismissListener(dismissListener);
 
@@ -164,6 +167,8 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
         mWeb2 = (KViewWebView) findViewById(R.id.web_kdetail_2);
         mWeb3 = (KViewWebView) findViewById(R.id.web_kdetail_3);
         mWeb4 = (KViewWebView) findViewById(R.id.web_kdetail_4);
+//        PYTODO
+        mWeb5 = (KViewWebView) findViewById(R.id.web_kdetail_5);
 
 
         mRelativeXiaDan = (RelativeLayout) findViewById(R.id.relative_kdetail_jisu_xiadan);
@@ -207,7 +212,7 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
         mTxtPanKou = (TextView) findViewById(R.id.tv_kdetail_pankou);
 //        mTxtFenZhong = (TextView) findViewById(R.id.tv_kdetail_min5);
         //
-        textViews = new TextView[]{mTxtFenShi, mTxtRiXian, mTxtPanKou, tvValue};
+        textViews = new TextView[]{mTxtFenShi, mTxtRiXian, mTxtPanKou, mTxtFenZhong};
         textViews[0].setSelected(true);
         for (int i = 0; i < mTitlelist.length; i++) {
             mTabLayout.addTab(mTabLayout.newTab().setText(mTitlelist[i]));
@@ -215,26 +220,13 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
         mTabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                for (int i = 0; i < mViewList.size(); i++) {
+//                PYTODO -2
+                for (int i = 0; i < mViewList.size()-2; i++) {
                     if (i == tab.getPosition()) {
                         mViewList.get(i).setVisibility(View.VISIBLE);
-//                        if (i == 1) {
-//                            AlertDialog.Builder builder = new AlertDialog.Builder(K_DetailActivity.this, AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
-//                            builder.setMessage("正在开发中，敬请期待");
-//                            builder.setTitle("提示");
-//                            builder.setPositiveButton("确定", new AlertDialog.OnClickListener() {
-//                                @Override
-//                                public void onClick(DialogInterface dialog, int which) {
-//                                    // TODO Auto-generated method stub
-//                                }
-//
-//                            });
-//                            builder.create().show();
-//                        }
+
                         if (!mCurrLoadMap.get(i)) {
-//                            if (i != 1) {
-//                                mViewList.get(i).loadUrl(mVUrlList.get(i));
-//                            }
+//
                             mViewList.get(i).loadUrl(mVUrlList.get(i));
                             mCurrLoadMap.put(i, true);
                         }
@@ -252,25 +244,6 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
             public void onTabReselected(TabLayout.Tab tab) {
             }
         });
-        //
-//        mSwitch.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (Global.USERINFO == null) {
-//                    Intent intent = new Intent(K_DetailActivity.this, LoginActivity.class);
-//                    startActivity(intent);
-//                    return;
-//                }
-//                if (((CheckBox) v).isChecked()) { // 如果打开了开关
-//                    String url = DataUrl.START_JISU_ORDER_URL + mID + "/prono/" + mCurrProInfo.prono + "/moni/" + mMoni;
-//                    Intent intent = new Intent(K_DetailActivity.this, WebActivity.class);
-//                    intent.putExtra("url", url);
-//                    startActivity(intent);
-//                } else { // 如果关闭了开关
-//                    closeOrderSet();
-//                }
-//            }
-//        });
 
 
 
@@ -299,19 +272,21 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
         mTxtJieSuan.setOnClickListener(this);
 
 
-//        mQuickSwitch.setState(false);
-
         mQuickSwitch.setSlideListener(this);
 
         //
         mWeb2.setVisibility(View.GONE);
         mWeb3.setVisibility(View.GONE);
         mWeb4.setVisibility(View.GONE);
+//        PYTODO
+        mWeb5.setVisibility(View.GONE);
         //
         mViewList.add(mWeb1);
         mViewList.add(mWeb2);
         mViewList.add(mWeb3);
         mViewList.add(mWeb4);
+//        PYTODO
+        mViewList.add(mWeb5);
     }
 
     /**
@@ -331,9 +306,50 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             mSpinerPopWindow.dismiss();
-            tvValue.setText(minutelist.get(position));
+            mTxtFenZhong.setText(minutelist.get(position));
+//        //    PYTODO
+//            for (int i = 0; i < mViewList.size(); i++) {
+//                if (position == 0) {
+//                    mViewList.get(i+3).setVisibility(View.VISIBLE);
+//
+//                    if (!mCurrLoadMap.get(i)) {
+//                        //
+//                        mViewList.get(i+3).loadUrl(mVUrlList.get(i+3));
+//                        mCurrLoadMap.put(i, true);
+//                    }
+//                } else if(position ==1){
+//                    mViewList.get(i+3).loadUrl(mVUrlList.get(i+4));
+//                    mCurrLoadMap.put(i, true);
+//                }else{
+//                    mViewList.get(i).setVisibility(View.GONE);
+//                }
+//            }
 
-            Toast.makeText(K_DetailActivity.this, "点击了:" + minutelist.get(position),Toast.LENGTH_LONG).show();
+//            if (i == position) {
+//                textViews[i].setSelected(true);
+//                mViewList.get(i).setVisibility(View.VISIBLE);
+//
+//                if (!mCurrLoadMap.get(i)) {
+//
+//                    mViewList.get(i).loadUrl(mVUrlList.get(i));
+//                    mCurrLoadMap.put(i, true);
+//                }
+//            } else {
+//                textViews[i].setSelected(false);
+//                mViewList.get(i).setVisibility(View.GONE);
+//            }
+
+            switch (position) {
+
+                case 0:
+                    setWebviewVisible(3);
+                    break;
+
+                case 1:
+                    setPopupWebviewVisible(4);
+                    break;
+            }
+//            Toast.makeText(K_DetailActivity.this, "点击了:" + minutelist.get(position) + position,Toast.LENGTH_LONG).show();
         }
     };
 
@@ -344,9 +360,9 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
-                case R.id.tv_kdetail_min5:
-                    mSpinerPopWindow.setWidth(tvValue.getWidth());
-                    mSpinerPopWindow.showAsDropDown(tvValue);
+                case R.id.tv_kdetail_min:
+                    mSpinerPopWindow.setWidth(mTxtFenZhong.getWidth());
+                    mSpinerPopWindow.showAsDropDown(mTxtFenZhong);
                     setTextImage(R.mipmap.icon_up);
                     break;
             }
@@ -370,7 +386,7 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
     private void setTextImage(int resId) {
         Drawable drawable = getResources().getDrawable(resId);
         drawable.setBounds(0, 0, drawable.getMinimumWidth(),drawable.getMinimumHeight());// 必须设置图片大小，否则不显示
-        tvValue.setCompoundDrawables(null, null, drawable, null);
+        mTxtFenZhong.setCompoundDrawables(null, null, drawable, null);
     }
 
 
@@ -540,30 +556,20 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
 
         }
     }
-
+  //PYTODO -1
     //设置webview的显示与隐藏
     public void setWebviewVisible(int position) {
-        for (int i = 0; i < mViewList.size(); i++) {
+
+        for (int i = 0; i < mViewList.size()-1; i++) {
+
+            mViewList.get(mViewList.size()-1).setVisibility(View.GONE);
+
             if (i == position) {
                 textViews[i].setSelected(true);
                 mViewList.get(i).setVisibility(View.VISIBLE);
-//                        if (i == 1) {
-//                            AlertDialog.Builder builder = new AlertDialog.Builder(K_DetailActivity.this, AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
-//                            builder.setMessage("正在开发中，敬请期待");
-//                            builder.setTitle("提示");
-//                            builder.setPositiveButton("确定", new AlertDialog.OnClickListener() {
-//                                @Override
-//                                public void onClick(DialogInterface dialog, int which) {
-//                                    // TODO Auto-generated method stub
-//                                }
-//
-//                            });
-//                            builder.create().show();
-//                        }
+
                 if (!mCurrLoadMap.get(i)) {
-//                            if (i != 1) {
-//                                mViewList.get(i).loadUrl(mVUrlList.get(i));
-//                            }
+
                     mViewList.get(i).loadUrl(mVUrlList.get(i));
                     mCurrLoadMap.put(i, true);
                 }
@@ -572,6 +578,78 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
                 mViewList.get(i).setVisibility(View.GONE);
             }
         }
+    }
+
+    //PYTODO
+    public void setPopupWebviewVisible(int position) {
+
+        for (int i = 0; i < mViewList.size(); i++) {
+            if (i == position){
+                textViews[mViewList.size()-2].setSelected(true);
+                mViewList.get(i).setVisibility(View.VISIBLE);
+                if (!mCurrLoadMap.get(i)) {
+
+                    mViewList.get(i).loadUrl(mVUrlList.get(i));
+                    mCurrLoadMap.put(i, true);
+                }
+            }else {
+                textViews[i].setSelected(false);
+                mViewList.get(i).setVisibility(View.GONE);
+            }
+
+
+        }
+
+
+
+//        for (int y = 0; y < minutelist.size(); y++){
+//            if (y == position){
+//                mViewList.get(y+3).setVisibility(View.VISIBLE);
+//                mViewList.get(y+3).loadUrl(mVUrlList.get(y+3));
+//                mCurrLoadMap.put(y+3, true);
+//            }
+//            textViews[mViewList.size()-1].setSelected(true);
+//        }
+
+    }
+
+
+
+    /**
+     * 获取K线图url
+     */
+    private void getKViewUrl() {
+        new KViewUrlPresenter(this).getKViewUrl(mCurrProInfo.prono, mID, mCurrProInfo.catid, mCurrProInfo.nums, mDevice, mMoni, new IKViewUrlListener() {
+            @Override
+            public void onSuccess(KViewUrlDataBean data) {
+                if (data.response != null) {
+                    mCurrUrl = data.response; // 各种url
+                    mVUrlList.add(data.response.minute);
+                    mVUrlList.add(data.response.kline);
+                    mVUrlList.add(data.response.pankou);
+                    mVUrlList.add(data.response.minute_kline5);
+                    mVUrlList.add(data.response.minute_kline15);
+                    //
+                    mWeb1.loadUrl(mVUrlList.get(0));
+                    mCurrLoadMap.put(0, true);
+                    mCurrLoadMap.put(1, false);
+                    mCurrLoadMap.put(2, false);
+                    mCurrLoadMap.put(3, false);
+                    mCurrLoadMap.put(4, false);
+                }
+
+            }
+
+            @Override
+            public void onFailure(BaseData data) {
+
+            }
+
+            @Override
+            public void onError() {
+
+            }
+        });
     }
 
     //判断是否是登录状态
@@ -667,7 +745,6 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
                             message.obj = orderdata;
 
                             mHandlerRefreshChicang.sendMessage(message);
-                            //  PYTODO
                             mCurrProInfo.zhang = data.data.zhang;
                             mCurrProInfo.die = data.data.die;
 
@@ -827,42 +904,7 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
         }
     };
 
-    /**
-     * 获取K线图url
-     */
-    private void getKViewUrl() {
-        new KViewUrlPresenter(this).getKViewUrl(mCurrProInfo.prono, mID, mCurrProInfo.catid, mCurrProInfo.nums, mDevice, mMoni, new IKViewUrlListener() {
-            @Override
-            public void onSuccess(KViewUrlDataBean data) {
-                if (data.response != null) {
-                    mCurrUrl = data.response; // 各种url
-                    mVUrlList.add(data.response.minute);
-                    mVUrlList.add(data.response.kline);
-                    mVUrlList.add(data.response.pankou);
-                    mVUrlList.add(data.response.minute_kline5);
-                    mVUrlList.add(data.response.minute_kline15);
-                    //
-                    mWeb1.loadUrl(mVUrlList.get(0));
-                    mCurrLoadMap.put(0, true);
-                    mCurrLoadMap.put(1, false);
-                    mCurrLoadMap.put(2, false);
-                    mCurrLoadMap.put(3, false);
-                    mCurrLoadMap.put(4, false);
-                }
 
-            }
-
-            @Override
-            public void onFailure(BaseData data) {
-
-            }
-
-            @Override
-            public void onError() {
-
-            }
-        });
-    }
 
     /**
      * 填充详情相关数据
@@ -1072,6 +1114,7 @@ public class K_DetailActivity extends BaseActivity implements View.OnClickListen
         mWeb2.clearMemory();
         mWeb3.clearMemory();
         mWeb4.clearMemory();
+        mWeb5.clearMemory();
 
         super.onDestroy();
     }

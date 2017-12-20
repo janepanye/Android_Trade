@@ -166,10 +166,13 @@ public class KViewWebView extends RelativeLayout {
             this.removeView(mScrollView);
             mScrollView.stopLoading();
             mScrollView.getSettings().setJavaScriptEnabled(false);
+            mScrollView.clearCache(true);
             mScrollView.clearHistory();
             mScrollView.removeAllViews();
             mScrollView.destroy();
+            mScrollView = null;
         }
+        mXRefreshView = null;
     }
 
 

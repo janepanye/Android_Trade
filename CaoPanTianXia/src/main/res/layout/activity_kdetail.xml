@@ -82,15 +82,15 @@
             <TextView
                 android:id="@+id/tv_kdetail_pankou"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:background="@drawable/selector_tablayout_bg"
+                android:gravity="center"
                 android:paddingBottom="2dp"
                 android:paddingTop="2dp"
                 android:text="盘口"
                 android:textColor="@drawable/selector_tablayout_text"
-                android:textSize="14sp"
-                android:layout_weight="1"
-                android:gravity="center"/>
+                android:textSize="14sp" />
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -98,7 +98,7 @@
                 android:layout_weight=".5"/>
 
             <TextView
-                android:id="@+id/tv_kdetail_min5"
+                android:id="@+id/tv_kdetail_min"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/selector_tablayout_bg"
@@ -139,6 +139,11 @@
 
             <com.coco3g.caopantx.view.KViewWebView
                 android:id="@+id/web_kdetail_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.coco3g.caopantx.view.KViewWebView
+                android:id="@+id/web_kdetail_5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
