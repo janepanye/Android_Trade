@@ -249,6 +249,16 @@ public class MyTemplate extends LinearLayout implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+//        switch (v.getId()){
+//            case R.id.head_more:
+//                if (ll != null) {
+//                    ll.onMoreClick(v);
+//                }
+//                break;
+//            case R.id.head_title:
+//
+//
+//        }
         if (v.getId() == R.id.head_more) {
             if (ll != null) {
                 ll.onMoreClick(v);

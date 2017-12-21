@@ -68,7 +68,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     private TransacationAdapter mGuoJiAdapter, mGuoNeiAdapter;
 
 
-    private ExpandableGridView mAppGridView = null;
+    private ExpandableGridView mAppGridView;
     private SimpleAdapter simpAdapter;
 
     private int[] mAppIcons = {R.mipmap.pic_home_micp_1, R.mipmap.pic_home_news_1,
@@ -144,7 +144,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
 
 
-        //初始化数据
+        //初始化数据 step2
         List<Map<String,Object>> listItems = new ArrayList<>();
 
         for (int i=0; i<mAppIcons.length; i++) {
@@ -154,7 +154,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
             listItems.add(listItem);
         }
 
-        //创建simpleAdpater
+        //创建simpleAdpater  step3
 
         simpAdapter = new SimpleAdapter(getActivity(),
                 listItems,
@@ -165,50 +165,54 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         mAppGridView.setAdapter(simpAdapter);
 
         //添加列表项监听器
-        mAppGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent;
-                switch (i) {
+        mAppGridView.setOnItemClickListener(menuClickListenr);
 
-                    case 0:
-                        intent = new Intent(getActivity(), MoNiTransActivity.class);
-                        startActivity(intent);
-                        break;
 
-                    case 1:
-                        intent = new Intent(getActivity(), WebActivity.class);
-                        intent.putExtra("url", DataUrl.BASE_URL + "/content/index/news");
-                        startActivity(intent);
-                        break;
 
-                    case 2:
-                        intent = new Intent(getActivity(), WebActivity.class);
-                        intent.putExtra("url", DataUrl.JINSHISHUJU );    //DataUrl.BASE_URL + "/Member/index/tuiguang.html"
-                        startActivity(intent);
-                        break;
-
-                    case 3:
-                        intent = new Intent(getActivity(), WebActivity.class);
-                        intent.putExtra("url", DataUrl.BASE_URL + "/content/index/lists/catid/3");
-                        startActivity(intent);
-                        break;
-
-                    case 4:
-                        intent = new Intent(getActivity(), WebActivity.class);
-                        intent.putExtra("url", DataUrl.BASE_URL + "/Member/index/zhibo_list");
-                        startActivity(intent);
-                        break;
-
-                    case 5:
-                        intent = new Intent(getActivity(), WebActivity.class);
-                        intent.putExtra("url", DataUrl.BASE_URL + "/Home/index/guarantee");
-                        startActivity(intent);
-                        break;
-
-                }
-            }
-        });
+//        mAppGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                Intent intent;
+//                switch (i) {
+//
+//                    case 0:
+//                        intent = new Intent(getActivity(), MoNiTransActivity.class);
+//                        startActivity(intent);
+//                        break;
+//
+//                    case 1:
+//                        intent = new Intent(getActivity(), WebActivity.class);
+//                        intent.putExtra("url", DataUrl.BASE_URL + "/content/index/news");
+//                        startActivity(intent);
+//                        break;
+//
+//                    case 2:
+//                        intent = new Intent(getActivity(), WebActivity.class);
+//                        intent.putExtra("url", DataUrl.JINSHISHUJU );    //DataUrl.BASE_URL + "/Member/index/tuiguang.html"
+//                        startActivity(intent);
+//                        break;
+//
+//                    case 3:
+//                        intent = new Intent(getActivity(), WebActivity.class);
+//                        intent.putExtra("url", DataUrl.BASE_URL + "/content/index/lists/catid/3");
+//                        startActivity(intent);
+//                        break;
+//
+//                    case 4:
+//                        intent = new Intent(getActivity(), WebActivity.class);
+//                        intent.putExtra("url", DataUrl.BASE_URL + "/Member/index/zhibo_list");
+//                        startActivity(intent);
+//                        break;
+//
+//                    case 5:
+//                        intent = new Intent(getActivity(), WebActivity.class);
+//                        intent.putExtra("url", DataUrl.BASE_URL + "/Home/index/guarantee");
+//                        startActivity(intent);
+//                        break;
+//
+//                }
+//            }
+//        });
 
 
 
@@ -244,16 +248,59 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
             }
         });
 
-//        监听事件
-//        mGuijiSection.setOnClickListener(this);
-
-
-
-
 
 
     }
 
+
+    /**
+     * 头部菜单点击事件
+     */
+    private AdapterView.OnItemClickListener menuClickListenr =new AdapterView.OnItemClickListener() {
+        @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent;
+                switch (i) {
+
+                    case 0:
+                        intent = new Intent(getActivity(), MoNiTransActivity.class);
+                        startActivity(intent);
+                        break;
+
+                    case 1:
+                        intent = new Intent(getActivity(), WebActivity.class);
+                        intent.putExtra("url", DataUrl.BASE_URL + "/content/index/news");
+                        startActivity(intent);
+                        break;
+
+                    case 2:
+                        intent = new Intent(getActivity(), WebActivity.class);
+                        intent.putExtra("url", DataUrl.JINSHISHUJU );
+                        startActivity(intent);
+                        break;
+
+                    case 3:
+                        intent = new Intent(getActivity(), WebActivity.class);
+                        intent.putExtra("url", DataUrl.BASE_URL + "/content/index/lists/catid/3");
+                        startActivity(intent);
+                        break;
+
+                    case 4:
+                        intent = new Intent(getActivity(), WebActivity.class);
+                        intent.putExtra("url", DataUrl.BASE_URL + "/Member/index/zhibo_list");
+                        startActivity(intent);
+                        break;
+
+                    case 5:
+                        intent = new Intent(getActivity(), WebActivity.class);
+                        intent.putExtra("url", DataUrl.BASE_URL + "/Home/index/guarantee");
+                        startActivity(intent);
+                        break;
+
+                }
+            }
+
+    };
 
     /**
      * 获取banner

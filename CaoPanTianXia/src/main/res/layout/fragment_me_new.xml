@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/app_activity_bg"
@@ -47,14 +48,31 @@
                 android:orientation="vertical"
                 android:layout_weight="0.5">
 
-                <ImageView
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
+
+                <com.coco3g.caopantx.view.CircleImageView
                     android:id="@+id/mine_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:layout_marginTop="10dp"
+                    android:layout_centerInParent="true"
                     android:layout_gravity="center"
-                    android:scaleType="matrix"
-                    android:background="@drawable/mine_list_item_name" />
+                    android:src="@mipmap/ic_launcher" />
+
+
+
+                <!--<ImageView-->
+                    <!--android:id="@+id/mine_icon"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="10dp"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:scaleType="matrix"-->
+                    <!--android:background="@drawable/mine_list_item_name" />-->
 
 
                 <TextView
@@ -66,7 +84,7 @@
                     android:layout_marginTop="10dp"
                     android:drawableRight="@mipmap/mine_edit"
                     android:gravity="center"
-                    android:text="12333******"
+                    android:text="131******"
                     android:textColor="@color/white"
                     android:textSize="15sp" />
             </LinearLayout>
