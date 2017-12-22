@@ -7,7 +7,9 @@
               android:paddingTop="10dp">
 
 
-    <include layout="@layout/template_head"/>
+    <include
+        android:id="@+id/head"
+        layout="@layout/template_head"/>
 
     <ImageView
         android:layout_width="match_parent"

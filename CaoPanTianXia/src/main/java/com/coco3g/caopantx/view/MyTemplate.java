@@ -1,6 +1,7 @@
 package com.coco3g.caopantx.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
@@ -9,8 +10,12 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.coco3g.caopantx.R;
+import com.coco3g.caopantx.activity.GuoJiActivity;
+
+import java.security.PrivateKey;
 
 /**
  * Created by Qinf on 2017/12/4.
@@ -20,12 +25,16 @@ public class MyTemplate extends LinearLayout implements View.OnClickListener {
 
     private LayoutInflater mInflater;
 
+    private LinearLayout llOne,llTwo,llThree;
+
+    private RelativeLayout rlHead;
+
     private TextView tvHeadTitel, tvMore,
             tvOneHead, tvOneCenter, tvOneFoot,
             tvTwoHead, tvTwoCenter, tvTwoFoot,
             tvThreeHead, tvThreeCenter, tvThreeFoot;
 
-    public TextOnClickListener ll;
+    public OnClickListener listener;
 
     public MyTemplate(Context context) {
         this(context, null);
@@ -94,9 +103,10 @@ public class MyTemplate extends LinearLayout implements View.OnClickListener {
         tvHeadTitel = (TextView) itemView.findViewById(R.id.head_title);
         tvMore = (TextView) itemView.findViewById(R.id.head_more);
 
-        LinearLayout llOne = (LinearLayout) itemView.findViewById(R.id.one);
-        LinearLayout llTwo = (LinearLayout) itemView.findViewById(R.id.two);
-        LinearLayout llThree = (LinearLayout) itemView.findViewById(R.id.three);
+        llOne = (LinearLayout) itemView.findViewById(R.id.one);
+        llTwo = (LinearLayout) itemView.findViewById(R.id.two);
+        llThree = (LinearLayout) itemView.findViewById(R.id.three);
+        rlHead = (RelativeLayout) itemView.findViewById(R.id.head);
 
         tvOneHead = (TextView) llOne.findViewById(R.id.item_head);
         tvOneCenter = (TextView) llOne.findViewById(R.id.item_center);
@@ -110,7 +120,10 @@ public class MyTemplate extends LinearLayout implements View.OnClickListener {
         tvThreeCenter = (TextView) llThree.findViewById(R.id.item_center);
         tvThreeFoot = (TextView) llThree.findViewById(R.id.item_foot);
 
-        tvMore.setOnClickListener(this);
+        llOne.setOnClickListener(this);
+        llTwo.setOnClickListener(this);
+        llThree.setOnClickListener(this);
+        rlHead.setOnClickListener(this);
 
     }
 
@@ -237,9 +250,11 @@ public class MyTemplate extends LinearLayout implements View.OnClickListener {
     }
 
 
-    public void setOnMoreListener() {
-        this.ll = ll;
+    public void setOnClickListener(OnClickListener listener) {
+        this.listener = listener;
     }
+
+
 
     public void setHeadLeftIcon(Drawable left) {
         left.setBounds(0, 0, left.getMinimumWidth(), left.getMinimumHeight());
@@ -249,26 +264,45 @@ public class MyTemplate extends LinearLayout implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-//        switch (v.getId()){
-//            case R.id.head_more:
-//                if (ll != null) {
-//                    ll.onMoreClick(v);
-//                }
-//                break;
-//            case R.id.head_title:
-//
-//
-//        }
-        if (v.getId() == R.id.head_more) {
-            if (ll != null) {
-                ll.onMoreClick(v);
-            }
+        switch (v.getId()){
+            case R.id.head:
+                if (listener != null) {
+                    listener.onMoreClick(v);
+                }
+
+                break;
+
+            case R.id.one:
+                if (listener != null){
+                    listener.onOneClick(v);
+                }
+
+                break;
+
+
+            case R.id.two:
+                if (listener != null){
+                    listener.onTwoClick(v);
+                }
+
+                break;
+
+
+            case R.id.three:
+                if (listener != null){
+                    listener.onThreeClick(v);
+                }
+                break;
         }
+
     }
 
-    interface TextOnClickListener {
+    public interface OnClickListener {
 
-        void onMoreClick(View view);
+        void  onMoreClick(View view);
+        void  onOneClick(View view);
+        void  onTwoClick(View view);
+        void  onThreeClick(View view);
 
     }
 }

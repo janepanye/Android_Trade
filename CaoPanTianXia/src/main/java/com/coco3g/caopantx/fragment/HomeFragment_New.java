@@ -1,7 +1,6 @@
 package com.coco3g.caopantx.fragment;
 
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,26 +12,24 @@ import android.widget.AdapterView;
 import android.widget.ExpandableListView;
 import android.widget.SimpleAdapter;
 
+import com.coco3g.caopantx.R;
 import com.coco3g.caopantx.activity.BaseFragment;
-import com.coco3g.caopantx.activity.GuoJiActivity;
-import com.coco3g.caopantx.activity.GuoNeiActivity;
+import com.coco3g.caopantx.activity.K_DetailActivity;
 import com.coco3g.caopantx.activity.MoNiTransActivity;
 import com.coco3g.caopantx.activity.WebActivity;
 import com.coco3g.caopantx.adapter.HomeAdapter;
 import com.coco3g.caopantx.adapter.TransacationAdapter;
 import com.coco3g.caopantx.bean.BannerListData;
 import com.coco3g.caopantx.bean.BaseData;
+import com.coco3g.caopantx.bean.ProChildListDataBean;
 import com.coco3g.caopantx.bean.ProGroupListDataBean;
 import com.coco3g.caopantx.bean.TransListDataBean;
 import com.coco3g.caopantx.data.DataUrl;
+import com.coco3g.caopantx.listener.IBannerListener;
 import com.coco3g.caopantx.listener.IProListListener;
 import com.coco3g.caopantx.listener.ITransListListener;
 import com.coco3g.caopantx.presenter.BannerListPresenter;
 import com.coco3g.caopantx.presenter.ProListPresenter;
-import com.coco3g.caopantx.R;
-import com.coco3g.caopantx.activity.K_DetailActivity;
-import com.coco3g.caopantx.bean.ProChildListDataBean;
-import com.coco3g.caopantx.listener.IBannerListener;
 import com.coco3g.caopantx.presenter.SocketRequestPresenter;
 import com.coco3g.caopantx.presenter.TransPresenter;
 import com.coco3g.caopantx.view.BannerView;
@@ -47,9 +44,7 @@ import java.util.List;
 import java.util.Map;
 
 
-
-
-public class HomeFragment extends BaseFragment{
+public class HomeFragment_New extends BaseFragment implements View.OnClickListener {
     View view;
     View mHeaderView;
     BannerView mHeaderBanner;
@@ -101,6 +96,7 @@ public class HomeFragment extends BaseFragment{
         getBannerList();
 
         getGuoNeiProList();
+
 
         getGuojiTransList();
 
@@ -161,89 +157,6 @@ public class HomeFragment extends BaseFragment{
 
         //添加列表项监听器
         mAppGridView.setOnItemClickListener(menuClickListenr);
-
-
-        mInsideExit.setOnClickListener(new MyTemplate.OnClickListener() {
-            @Override
-            public void onMoreClick(View view) {
-
-                Intent intent = new Intent(getActivity(), GuoNeiActivity.class);
-                startActivity(intent);
-
-            }
-
-            @Override
-            public void onOneClick(View view) {
-                Intent intent = new Intent(getActivity(), K_DetailActivity.class);
-                intent.putExtra("id", mCurrAllData.get(0).groupList.get(0).tid);
-                intent.putExtra("device", "Android");
-                intent.putExtra("moni", "0");
-                startActivity(intent);
-
-            }
-
-            @Override
-            public void onTwoClick(View view) {
-                Intent intent = new Intent(getActivity(), K_DetailActivity.class);
-                intent.putExtra("id", mCurrAllData.get(0).groupList.get(1).tid);
-                intent.putExtra("device", "Android");
-                intent.putExtra("moni", "0");
-                startActivity(intent);
-
-            }
-
-            @Override
-            public void onThreeClick(View view) {
-                Intent intent = new Intent(getActivity(), K_DetailActivity.class);
-                intent.putExtra("id", mCurrAllData.get(0).groupList.get(2).tid);
-                intent.putExtra("device", "Android");
-                intent.putExtra("moni", "0");
-                startActivity(intent);
-
-            }
-        });
-
-        mOutsideExit.setOnClickListener(new MyTemplate.OnClickListener() {
-            @Override
-            public void onMoreClick(View view) {
-
-                Intent intent = new Intent(getActivity(), GuoJiActivity.class);
-                startActivity(intent);
-            }
-
-            @Override
-            public void onOneClick(View view) {
-                Intent intent = new Intent(getActivity(), K_DetailActivity.class);
-                intent.putExtra("id", mCurrAllData.get(1).groupList.get(0).tid);
-                intent.putExtra("device", "Android");
-                intent.putExtra("moni", "0");
-                startActivity(intent);
-
-            }
-
-            @Override
-            public void onTwoClick(View view) {
-                Intent intent = new Intent(getActivity(), K_DetailActivity.class);
-                intent.putExtra("id", mCurrAllData.get(1).groupList.get(1).tid);
-                intent.putExtra("device", "Android");
-                intent.putExtra("moni", "0");
-                startActivity(intent);
-
-            }
-
-            @Override
-            public void onThreeClick(View view) {
-                Intent intent = new Intent(getActivity(), K_DetailActivity.class);
-                intent.putExtra("id", mCurrAllData.get(1).groupList.get(2).tid);
-                intent.putExtra("device", "Android");
-                intent.putExtra("moni", "0");
-                startActivity(intent);
-
-            }
-        });
-
-
-
 
 
 
@@ -450,7 +363,7 @@ public class HomeFragment extends BaseFragment{
                     if (mGuoJiAdapter != null && mGuoJiAdapter.getList() != null && mGuoJiAdapter.getList().size() > 0) {
                         ArrayList<TransListDataBean.TransData> oldlist = mGuoJiAdapter.getList();
                         ArrayList<TransListDataBean.TransData> newlist = new ArrayList<>();
-                        for (int i = oldlist.size()-1; i >= 0; i--) {
+                        for (int i = 0; i < oldlist.size(); i++) {
                             TransListDataBean.TransData olditemdata = oldlist.get(i);
                             String prono = olditemdata.prono;
                             for (int j = 0; j < list.size(); j++) {
@@ -476,7 +389,7 @@ public class HomeFragment extends BaseFragment{
                     if (mGuoNeiAdapter != null && mGuoNeiAdapter.getList() != null && mGuoNeiAdapter.getList().size() > 0) {
                         ArrayList<TransListDataBean.TransData> oldlist = mGuoNeiAdapter.getList();
                         ArrayList<TransListDataBean.TransData> newlist = new ArrayList<>();
-                        for (int i = oldlist.size()-1; i >= 0; i--) {
+                        for (int i = 0; i < oldlist.size(); i++) {
                             TransListDataBean.TransData olditemdata = oldlist.get(i);
                             String prono = olditemdata.prono;
                             for (int j = 0; j < list.size(); j++) {
@@ -646,7 +559,7 @@ public class HomeFragment extends BaseFragment{
 
 
     /**
-     * 获取内盘产品列表数据
+     * 获取外盘产品列表数据
      */
     private void getGuoNeiProList() {
         new ProListPresenter(getActivity()).getProList("14", "Android", new IProListListener() {
@@ -703,4 +616,66 @@ public class HomeFragment extends BaseFragment{
         });
     }
 
+
+
+
+    /**
+     * 菜单点击事件
+     */
+    @Override
+    public void onClick(View v) {
+//        Intent intent;
+//        switch (v.getId()) {
+//
+//            case R.id.list_item_all_guoji:
+//                intent = new Intent(getActivity(), GuoJiActivity.class);
+//                startActivity(intent);
+//                break;
+
+//        }
+    }
 }
+//        mAppGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                Intent intent;
+//                switch (i) {
+//
+//                    case 0:
+//                        intent = new Intent(getActivity(), MoNiTransActivity.class);
+//                        startActivity(intent);
+//                        break;
+//
+//                    case 1:
+//                        intent = new Intent(getActivity(), WebActivity.class);
+//                        intent.putExtra("url", DataUrl.BASE_URL + "/content/index/news");
+//                        startActivity(intent);
+//                        break;
+//
+//                    case 2:
+//                        intent = new Intent(getActivity(), WebActivity.class);
+//                        intent.putExtra("url", DataUrl.JINSHISHUJU );    //DataUrl.BASE_URL + "/Member/index/tuiguang.html"
+//                        startActivity(intent);
+//                        break;
+//
+//                    case 3:
+//                        intent = new Intent(getActivity(), WebActivity.class);
+//                        intent.putExtra("url", DataUrl.BASE_URL + "/content/index/lists/catid/3");
+//                        startActivity(intent);
+//                        break;
+//
+//                    case 4:
+//                        intent = new Intent(getActivity(), WebActivity.class);
+//                        intent.putExtra("url", DataUrl.BASE_URL + "/Member/index/zhibo_list");
+//                        startActivity(intent);
+//                        break;
+//
+//                    case 5:
+//                        intent = new Intent(getActivity(), WebActivity.class);
+//                        intent.putExtra("url", DataUrl.BASE_URL + "/Home/index/guarantee");
+//                        startActivity(intent);
+//                        break;
+//
+//                }
+//            }
+//        });

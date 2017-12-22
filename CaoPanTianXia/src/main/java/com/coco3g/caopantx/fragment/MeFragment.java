@@ -194,8 +194,10 @@ public class MeFragment extends BaseFragment implements View.OnClickListener {
                         String url = "http://visit.panshou.cn"+Global.USERINFO.head;
                         //得到可用的图片
                         Bitmap bitmap = getHttpBitmap(url);
-                        // 图片
-                        mImgIcon.setImageBitmap(bitmap);
+                        // 如果远程没有图片就显示占位图
+                        if (bitmap != null){
+                            mImgIcon.setImageBitmap(bitmap);
+                        }
 
 
                     }
