@@ -6,12 +6,29 @@
     android:background="@color/white"
     android:orientation="vertical">
 
-    <com.handmark.pulltorefresh.library.PullToRefreshExpandableListView
-        android:id="@+id/listview_home"
+    <!--<com.handmark.pulltorefresh.library.PullToRefreshExpandableListView-->
+        <!--android:id="@+id/listview_home"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:divider="@null"-->
+        <!--android:listSelector="@color/transparent"-->
+        <!--/>-->
+
+
+    <com.handmark.pulltorefresh.library.PullToRefreshScrollView
+        android:id="@+id/home_refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:divider="@null"
-        android:listSelector="@color/transparent"/>
+        android:listSelector="@color/transparent" >
+
+
+        <include
+            android:id="@+id/home_main"
+            layout="@layout/a_home_head_view_new" />
+
+    </com.handmark.pulltorefresh.library.PullToRefreshScrollView>
+
 
 
     <!--<com.coco3g.zhong.view.MyScrollWebView-->

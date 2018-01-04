@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tab="http://schemas.android.com/apk/res-auto"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical">
@@ -35,39 +36,35 @@
     </LinearLayout>
 
 
+    <!--<ImageView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="10dp"-->
+        <!--android:background="@color/app_activity_bg"/>-->
+
+
     <!--<LinearLayout-->
         <!--android:layout_width="match_parent"-->
         <!--android:layout_height="match_parent"-->
         <!--android:orientation="vertical">-->
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:background="@color/app_activity_bg"/>
 
+        <!--<com.coco3g.caopantx.view.MyTemplate-->
+            <!--android:id="@+id/menu_list_guoji"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--app:headIcon="@mipmap/home_guoji"-->
+            <!--app:headMore="查看更多 >"-->
+            <!--app:headTitle="国际期货"-->
+            <!--app:oneCenter="一中"-->
+            <!--app:oneFoot="一尾"-->
+            <!--app:oneHead="一头"-->
+            <!--app:threeCenter="三种"-->
+            <!--app:threeFoot="三尾"-->
+            <!--app:threeHead="三头"-->
+            <!--app:twoCenter="二中"-->
+            <!--app:twoFoot="二尾"-->
+            <!--app:twoHead="二头"/>-->
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <com.coco3g.caopantx.view.MyTemplate
-            android:id="@+id/menu_list_guoji"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:headIcon="@mipmap/home_guoji"
-            app:headMore="查看更多 >"
-            app:headTitle="国际期货"
-            app:oneCenter="一中"
-            app:oneFoot="一尾"
-            app:oneHead="一头"
-            app:threeCenter="三种"
-            app:threeFoot="三尾"
-            app:threeHead="三头"
-            app:twoCenter="二中"
-            app:twoFoot="二尾"
-            app:twoHead="二头"/>
-
-    </LinearLayout>
+    <!--</LinearLayout>-->
 
 
     <ImageView
@@ -98,5 +95,31 @@
             app:twoHead="二头"/>
 
     </LinearLayout>
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/app_activity_bg" />
+
+    <com.coco3g.caopantx.view.PagerSlidingTabStrip
+        android:id="@+id/home_tabPager"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        tab:pstsDividerColor="#00000000"
+        tab:pstsIndicatorColor="@color/red"
+        tab:pstsIndicatorHeight="2.5dp"
+        tab:pstsShouldExpand="true"
+        tab:pstsTextColor="@color/selector_livestream"
+        tab:pstsUnderlineColor="#00000000"
+        tab:pstsUnderlineHeight="0dp"
+        />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/home_webViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="10000dp"
+        android:background="@color/white" />
+
 
 </LinearLayout>
